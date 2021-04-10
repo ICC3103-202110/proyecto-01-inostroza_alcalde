@@ -19,14 +19,14 @@ class Player():
 
     @coins.setter
     def coins(self,value):
-        if ((self.coins + value) < 0):
+        if (self.coins + value) < 0:
             return self.__coins = 0  #ver por que esto da error
         else:
             return self.__coins += value
 
     @life.setter
     def life(self,value):
-        if (self.__life == 1):
+        if self.__life == 1:
             return self.__life = 0
 '''
 
