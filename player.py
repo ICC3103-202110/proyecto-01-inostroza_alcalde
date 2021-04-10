@@ -19,7 +19,7 @@ class Player():
 
     @coins.setter
     def coins(self,value):
-        if (self.coins + value < 0):
+        if ((self.coins + value) < 0):
             return self.__coins = 0  #ver por que esto da error
         else:
             return self.__coins += value

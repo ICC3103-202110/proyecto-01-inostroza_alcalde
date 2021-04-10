@@ -1,5 +1,8 @@
 class Captain():
     def extortion (self):
-        return
+        self.coins=2
+
+    def block_extotion(self):
+        self.block_exto=False
         
         #metodos del capitan
