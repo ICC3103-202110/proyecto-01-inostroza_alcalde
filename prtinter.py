@@ -31,4 +31,26 @@ def challenge_message (name):
 def counter_messenge (name,card):
     print(f"The player {name} has made a counter attack at your choice, he claims to have {card}")
 
+def result_counter (value):
+    if value == True:
+        print("Youe win the counter attack")
+    else:
+        print("You lose the counter attack")
+
+def result_challenge(name,value):
+    if value == True:
+        print(f"You lose the challenge, the player {name} had the character")
+    else:
+        print(f"You win the challenge, the player {name} no had the character")
+
+def verification_counter(name,value):
+    if value == True:
+        print("No one has attack you")
+    else:
+        print(f"The player {name} has attacked your decision")
+
+
+ 
+
+
 
