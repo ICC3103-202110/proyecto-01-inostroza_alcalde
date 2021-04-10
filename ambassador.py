@@ -1,0 +1,3 @@
+class Ambassador():
+    pass 
+    #metodos
