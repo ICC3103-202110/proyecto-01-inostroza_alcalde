@@ -5,6 +5,7 @@ from captain    import Captain
 from sistem     import Sistem 
 from ambassador import Ambassador 
 from duke       import Duke 
+import printer
 '''
 name in carts
 duke = 1
@@ -22,19 +23,21 @@ def cards():
     assassin = assassin(5)
     diferent_card=[duke,contessa,captain,ambassador,assassin]
     return diferent_card
-    
+
 def winner(player_1,player_2,player_3,player_4=0):
-    if player_4 == 0:
-        lifes=[]
-        lifes.append(player_1.life)
-        lifes.append(player_2.life)
-        lifes.append(player_3.life)
-    else:
-        lifes=[]
-        lifes.append(player_1.life)
-        lifes.append(player_2.life)
-        lifes.append(player_3.life)
-        lifes.append(player_4.life)
+    try:
+        if player_4 == 0:
+            lifes=[]
+            lifes.append(player_1.life)
+            lifes.append(player_2.life)
+            lifes.append(player_3.life)
+    except:
+        else:
+            lifes=[]
+            lifes.append(player_1.life)
+            lifes.append(player_2.life)
+            lifes.append(player_3.life)
+            lifes.append(player_4.life)
     if sum(lifes)>1:
          return False
     else :
