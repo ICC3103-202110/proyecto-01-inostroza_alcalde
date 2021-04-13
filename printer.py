@@ -6,7 +6,7 @@ def election():
         '2) HIT ONOTHER PLAYER     \n'
         '3) START EXTORTION        \n'
         '4) COMMIT MURDER          \n'
-        '5) START CHANGE           \n'
+        '5) START TRADE CARDS           \n'
         )
     value = int(input())
     return value
