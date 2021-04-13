@@ -1,4 +1,8 @@
-class Captain():
+from card import Card
+class Captain(Card):
+    def __init__(self,name):
+           super().__init__(name)
+           
     def extortion (self):
         self.coins=2
 
