@@ -69,8 +69,16 @@ def main():
     stop=0
     stop_1=0
     while stop_1 != 1:
-        turn=1
-        printer.election(names,turn)
+        turn=0
+        elec=printer.election(names,turn)
+        win=printer.priority_challeng(names,turn)  #aca se elige quien desafia 
+        if win == 10:
+            print("as no one challenged, we proceed to counter attacks")
+            val=printer.counter(names,turn)
+            
+
+
+
 
     while stop!=1:
         if system.winner!=5:
