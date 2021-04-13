@@ -5,5 +5,5 @@ class Contessa(Card) : #condesa listo
            self.__no_killer
     def block_killer(self):
         value=False
-        return self.__no_killer = value  # creo que es lo unico que hace la condesa 
+        self.__no_killer = value  # creo que es lo unico que hace la condesa 
 # metodos para la contessa

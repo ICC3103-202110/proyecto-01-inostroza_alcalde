@@ -36,7 +36,6 @@ class Player():
 
     def end_game(self):
         self.life = False
-        return self.life = False
 
     def change_coins(self,value):
         val=self.coins

@@ -2,8 +2,25 @@ from card import Card
 class Ambassador(Card):
     def __init__(self,name):
            super().__init__(name)
+
+    @property
+    def cards_1(self):
+        return self.__cards_1
+    
+    @cards_1.setter
+    def cards_1(self,value,cards_1):
+        if len(value)<=2:
+            if cards_1[0] == 6 and cards_1[1] == 6:
+                 self.__cards_1 = value
+            else:
+                 self.__cards_1 = [6,6]
+        else:
+             self.__cards_1
+
            
-    def excahnge_card(self,value,value_2):
-        card_1 = Value
-        card_2 = value_2
-        return self.cards =(card_1,card_2) #ver por que se cae esto  !!
+    def excahnge_card(self,value_1,value_2):
+        cards=[value_1,value_2]
+        self.__cards_1 = cards #ver por que se cae esto  !!
+
+    def restore(self):
+        self.__cards_1 = [6,6]
