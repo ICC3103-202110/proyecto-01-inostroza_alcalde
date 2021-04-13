@@ -1,2 +1,2 @@
-class Sistem():
+class System():
     pass

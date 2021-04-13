@@ -3,9 +3,10 @@ from contessa   import Contessa
 from cards      import Cards 
 from captain    import Captain 
 from sistem     import Sistem 
-from ambassador import Ambassador 
+from ambassador import Ambassador
 from duke       import Duke 
 import printer
+
 '''
 name in carts
 duke = 1
@@ -13,14 +14,14 @@ contessa = 2
 captain = 3
 ambassador = 4
 assassin = 5
-
+lista=1,2,3,4,5
 '''
 def cards():
     duke = Duke(1)
     contessa = Contessa(2)
-    captain = captian(3)
-    ambassador = ambassador(4)
-    assassin = assassin(5)
+    captain = captain(3)
+    ambassador = Ambassador(4)
+    assassin = Assassin(5)
     diferent_card=[duke,contessa,captain,ambassador,assassin]
     return diferent_card
 
@@ -32,7 +33,6 @@ def winner(player_1,player_2,player_3,player_4=0):
             lifes.append(player_2.life)
             lifes.append(player_3.life)
     except:
-        else:
             lifes=[]
             lifes.append(player_1.life)
             lifes.append(player_2.life)
@@ -47,7 +47,7 @@ def winner(player_1,player_2,player_3,player_4=0):
                 return stop
             stop+=1
 
-def         
+      
 if __name__ == 'main':
     #aca llama funciones
     pass 

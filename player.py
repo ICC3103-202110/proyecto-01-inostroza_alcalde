@@ -1,9 +1,9 @@
 class Player():
     def __init__(self,name,coins,cards,life): #las cartas van a cambiar mucho, creo que no vale la pena que sean privadas 
         self.name=name
-        self.coins=coins
-        self.cards=cards
-        self.life=life
+        self.__coins=coins
+        self.__cards=cards
+        self.__life=life
 
     @property
     def name(self):
@@ -20,14 +20,14 @@ class Player():
     @coins.setter
     def coins(self,value):
         if (self.coins + value) < 0:
-            return self.__coins = 0  #ver por que esto da error
+            self.__coins = 0 #ver por que esto da error
         else:
-            return self.__coins += value
+            self.__coins += value
 
     @life.setter
     def life(self,value):
         if self.__life == 1:
-            return self.__life = 0
+             self.__life = 0
 '''
 
     @property
