@@ -1,9 +1,9 @@
 class Player():
-    def __init__(self,name,coins,cards,life): #las cartas van a cambiar mucho, creo que no vale la pena que sean privadas 
+    def __init__(self,name,coins,cards): #las cartas van a cambiar mucho, creo que no vale la pena que sean privadas 
         self.name=name
         self.__coins=coins
         self.__cards=cards
-        self.__life=life
+        self.__life=True
 
     @property
     def name(self):
@@ -26,9 +26,28 @@ class Player():
 
     @life.setter
     def life(self,value):
-        if self.__life == 1:
-             self.__life = 0
-'''
+        if self.__life == True:
+             self.__life = False
+
+    def raise_card(self):
+        value = int(input("enter the position of the card you want to turn"))
+        self.cards[value][0] = 0
+        return self.cards 
+
+    def end_game(self):
+        self.life = False
+        return self.life = False
+
+    def change_coins(self,value):
+        val=self.coins
+        self.coins = value
+        if val-value < 0:
+            return 1
+        else:
+            return 2 
+        return 
+    
+    '''
 
     @property
     def cards(slef):
@@ -39,23 +58,6 @@ class Player():
         if (len(self.cards)<=2):
             if (value[0] == 0):
 '''
-
-    def raise_card(self):
-        value = int(input("enter the position of the card you want to turn"))
-        self.cards[value][0] = 0
-        return self.cards 
-
-    def end_game(self):
-        return self.life = 0
-
-    def change_coins(self,value):
-        val=self.coins
-        self.coins = value
-        if val-value < 0:
-            return 1
-        else:
-            return 2 
-        return 
 
 
 

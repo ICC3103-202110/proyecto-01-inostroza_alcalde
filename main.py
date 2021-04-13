@@ -2,9 +2,10 @@
 from contessa   import Contessa 
 from cards      import Cards 
 from captain    import Captain 
-from sistem     import SYstem 
+from sistem     import System 
 from ambassador import Ambassador
 from duke       import Duke 
+from assassin import Assassin
 import prtinter
 
 '''
@@ -14,12 +15,12 @@ contessa = 2
 captain = 3
 ambassador = 4
 assassin = 5
-lista=1,2,3,4,5
+list=1,2,3,4,5
 '''
 def cards():
     duke = Duke(1)
     contessa = Contessa(2)
-    captain = captain(3)
+    captain = Captain(3)
     ambassador = Ambassador(4)
     assassin = Assassin(5)
     diferent_card=[duke,contessa,captain,ambassador,assassin]
