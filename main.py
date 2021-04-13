@@ -2,10 +2,10 @@
 from contessa   import Contessa 
 from cards      import Cards 
 from captain    import Captain 
-from sistem     import Sistem 
+from sistem     import SYstem 
 from ambassador import Ambassador
 from duke       import Duke 
-import printer
+import prtinter
 
 '''
 name in carts
