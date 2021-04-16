@@ -22,5 +22,8 @@ class Ambassador(Card):
         cards=[value_1,value_2]
         self.__cards_1 = cards #ver por que se cae esto  !!
 
+    def block_extor(self):
+        self.block_exto=False
+
     def restore(self):
         self.__cards_1 = [6,6]

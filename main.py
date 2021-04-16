@@ -94,10 +94,11 @@ def main():
             print('poner quien gana ')
             stop=1
 
-      
-if __name__ == 'main':
+print("hola")     
+if __name__ == '__main__':
+    
     #aca llama funciones
-    pass 
+    main()
 
         
 

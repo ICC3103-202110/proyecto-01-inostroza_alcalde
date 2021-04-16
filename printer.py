@@ -2,12 +2,12 @@ import random
 def election(names,turn):
     actions=['CLAIM INCOME','FOREIGN AID',
              'START EXTORTION','COMMIT MURDER','START TRADE CHANGE']
-    print(names[turn])
+    print("player " +names[turn])
     print(" Selections played:")
-    for x in range(6):
-        print(str(x)+") "+actions[x])
+    for x in range(5):
+        print(str(x)+") "+ actions[x])
     value = int(input())
-    print(names[turn]+"has chosen"+actions[value])
+    print(names[turn]+" has chosen "+actions[value])
     return value
 
 def answer(name,value):
@@ -51,16 +51,16 @@ def verification_counter(name,value):
 '''
 
 def priority_challeng(names,turn):
-    print("challenge priority is set, who of you dares to challenge player " + names[turn-1])
+    print("challenge priority is set, who of you dares to challenge player " + names[turn] +" ?")
     for x in range(len(names)):
-        if x != (turn):
-            print(f"{x}) {names[0]}")
+        if x != turn:
+            print(f"{x}) {names[x]}")
+
     print("10) We are all chickens")
     value_1=int(input())  #este int deberia ser aprueba de error aun no lo es 
     if value_1 == 10:
         print("from here I can see their feathers falling")
-        return 10
-    
+        return 10 , 0
     else:
         stop=1
         cha=[]
@@ -77,7 +77,7 @@ def priority_challeng(names,turn):
             print("10) We are all chickens")
             value_2=int(input())  #este int deberia ser aprueba de error aun no lo es 
             if value_2 == 10:
-                return value_1
+                return value_1 , len(cha)
             else:
                 cha.append(value_1)
                 cha.append(value_2)
@@ -101,12 +101,12 @@ def priority_challeng(names,turn):
                             cha.append(value_1)
                             cha.append(y)
                         else:
-                            return value_1
+                            return value_1 , len(cha)
         print("It seems that we have more than one brave, the challenge refers")
         random.shuffle(cha) #first disorder
         win=cha[0]
         print("the winner to face "+names[turn]+" is "+names[win])
-        return win
+        return win,len(cha)
 
 def counter(names,turn):
     print("\n who wishes to counter attack") #aca igual se podria decir que es cada cosa de contra ataque 
