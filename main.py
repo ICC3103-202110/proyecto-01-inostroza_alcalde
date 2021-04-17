@@ -41,13 +41,14 @@ def main():
                 cards.delete_card()
                 card_play.append(cards.s_card)
                 all_cards.append(card_play)
-                print("enter player name "+str(x+1))
+                print("enter name to player "+str(x+1))
                 name=input()
                 names.append(name)
             player_1=Player(names[0],2,all_cards[0])
             player_2=Player(names[1],2,all_cards[1])
             player_3=Player(names[2],2,all_cards[2])
             player_4=0
+            players=[player_1,player_2,player_3,player_4]
             stop_2=1
         else:
             stop_2=1
@@ -66,21 +67,43 @@ def main():
             player_2=Player(names[1],2,all_cards[1])
             player_3=Player(names[2],2,all_cards[2])
             player_4=Player(names[3],2,all_cards[3])
+            players=[player_1,player_2,player_3,player_4]
         
     stop=0
     stop_1=0
+    print("\n")
+    print("\n")
+    l_names=len(names)
     while stop_1 != 1:
         turn=0
         stp=0 
         while stp!=1:
-            elec=printer.election(names,turn)
-            win , chall=printer.priority_challeng(names,turn)  #aca se elige quien desafia 
+            player=players[turn]
+            elec= printer.election(names,turn)
+            if elec==0:
+                player.change_coins(1)
+                break
+            if elec == 1:
+                if player.coins >=7:
+                    player.change_coins(-7)
+                    Assassin.killer(contessa,player,name_cards)
+                     
+            if elec > 1:
+                win , chall =printer.priority_challeng(names,turn)  #aca se elige quien desafia 
+            else:
+                print("\n this action cannot be challenged or countered")
+                break
             if win == 10:
-                print("as no one challenged, we proceed to counter attacks")
+                print("\n as no one challenged, we proceed to counter attacks")
                 val=printer.counter(names,turn)
                
             else:
-                pass
+                if chall<l_names:
+                    print("we proceed to counter attacks")
+                    
+        turn +=1
+        if turn>len(names):
+            turn=0
 
         
             
@@ -93,8 +116,7 @@ def main():
         if system.winner!=5:
             print('poner quien gana ')
             stop=1
-
-print("hola")     
+    
 if __name__ == '__main__':
     
     #aca llama funciones

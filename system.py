@@ -1,7 +1,6 @@
 from contessa   import Contessa 
 from cards      import Cards 
 from captain    import Captain 
-
 from ambassador import Ambassador
 from duke       import Duke 
 from assassin import Assassin

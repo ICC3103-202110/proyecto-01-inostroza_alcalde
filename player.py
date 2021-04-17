@@ -2,7 +2,7 @@ class Player():
     def __init__(self,name,coins,cards): #las cartas van a cambiar mucho, creo que no vale la pena que sean privadas 
         self.__name=name
         self.__coins=coins
-        self.__cards=cards
+        self.cards=cards #cambiar esto si lo quiero hacer privado 
         self.__life=True
 
     @property
@@ -39,26 +39,36 @@ class Player():
         self.life = False
 
     def change_coins(self,value):
-        val=self.coins
-        self.coins = value
-        if val-value < 0:
-            return 1
+        val=self.__coins
+        if value==2:
+            
+            if val+value < 0:
+                self.__coins=0
+                return 1
+            else:
+                self.__coins=val+value
+                return 2 
+            return 
         else:
-            return 2 
-        return 
-    
+            if val+value < 0:
+                    self.__coins=0
+            else:
+                self.__coins=val+value
+            
 
-
+'''   
+   por ahora las cartas son no privadas, despues cver como las hago privadas 
     @property
     def cards(self):
         return self.__cards
-'''
+
     @cards.setter
     def cards(self,value):
         if (len(self.cards)<=2):
-            if (value[0] == 0):
+            if (value[0] != 0):
 
 '''
+
 
 
         

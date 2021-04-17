@@ -1,10 +1,10 @@
 import random
 def election(names,turn):
-    actions=['CLAIM INCOME','FOREIGN AID',
+    actions=['CLAIM INCOME','HIT ANOTHER PLAYER','FOREIGN AID','GENERATE TAX',
              'START EXTORTION','COMMIT MURDER','START TRADE CHANGE']
-    print("player " +names[turn])
+    print("      player " +names[turn])
     print(" Selections played:")
-    for x in range(5):
+    for x in range(7):
         print(str(x)+") "+ actions[x])
     value = int(input())
     print(names[turn]+" has chosen "+actions[value])
@@ -109,6 +109,7 @@ def priority_challeng(names,turn):
         return win,len(cha)
 
 def counter(names,turn):
+    print()
     print("\n who wishes to counter attack") #aca igual se podria decir que es cada cosa de contra ataque 
     for x in range(len(names)):
         if x != (turn):
