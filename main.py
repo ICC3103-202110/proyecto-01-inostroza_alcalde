@@ -86,6 +86,7 @@ def main():
         print("hola inicio")
         while stp!=1:
             player=players[turn]
+            printer.print_all(turn,players,name_cards)
             elec= printer.election(names,turn,players)
             if elec==0:
                 player.change_coins(1)

@@ -146,31 +146,32 @@ def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas
     cards_1=play.cards
     coin_1=play.coins
     print()
-    print("NAME PLAYER             COINS                                      CARDS")
+    print("NAME PLAYER             COINS                            CARDS")
     for x in range(len(players)):
-        player=player[x]
+        player=players[x]
         if x != turn:
             c=player.cards
             car_1=c[0]
             car_2=c[1]
-            if car_1[0] == 0:
+            if car_1[0] == 1:
                 car_1[1] = 5
             else:
                 car_1[1]-=1
 
-            if car_2[0] == 0:
+            if car_2[0] == 1:
                 car_2[1]=5
             else:
                 car_2[1]-=1
-            print(f"%9s               {player.coins}                                     %s, $s " %(player.name,name_cards[car_1[1]],name_cards[car_2[1]]))
-    print(f'\t your coins: {coin_1}')
+            print(f"%9s             {player.coins}                            {name_cards[car_1[1]]} , {name_cards[car_2[1]]} " %player.name)
+    print(f'\nyour coins: {coin_1}')
     print("your cards in play: ")
     for x in cards_1:
         if x[0]==0:
             val=name_cards(x[1]-1)
-            print('- '+strike(val))
+            print('\t- '+strike(val))
         else:
-            print('- '+name_cards[x[1]-1])
+            print('\t- '+name_cards[x[1]-1])
+    print('\n')
 
             
 
