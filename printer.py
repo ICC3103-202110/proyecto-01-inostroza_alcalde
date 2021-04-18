@@ -10,6 +10,7 @@ def election(names,turn,players):
         print(" Selections played:")
         for x in range(7):
             print(str(x)+") "+ actions[x])
+        print(("---")*30)
         value = int(input())
         if value == 1:
             if player.coins>=7:
@@ -70,6 +71,7 @@ def priority_challeng(names,turn): #esto ya esta listo
             print(f"{x}) {names[x]}")
 
     print("10) We are all chickens")
+    print(("---")*20)
     value_1=int(input())  #este int deberia ser aprueba de error aun no lo es 
     if value_1 == 10:
         print("from here I can see their feathers falling")
@@ -81,15 +83,19 @@ def priority_challeng(names,turn): #esto ya esta listo
     while stop!=1:
         if len(names)>3:
             stop=1
+            print(("---")*20)
             for y in range(len(names)):
                 print()
                 if y !=turn and y != value_1: #no recuerdo para que servia esto, revisar 
                     print(names[y])
+                    
             print("are they chickens? won't they challenge it?")
             for y in range(len(names)):
                 if y !=turn and y != value_1:
                     print(str(y)+') '+names[y])
+
             print("10) We are all chickens")
+            print(("---")*20)
             value_2=int(input())  #este int deberia ser aprueba de error aun no lo es 
             if value_2 == 10:
                 
@@ -98,21 +104,25 @@ def priority_challeng(names,turn): #esto ya esta listo
                 cha.append(value_1)
                 cha.append(value_2)
                 participation.append(value_2)
+            print(("---")*20)
             for y in range(len(names)):
                     if y !=turn and y != value_1 and y != value_2:
                         print('player '+names[y]+ ' going to challenge? \n'
                         '0) NO \n'
                         '1) YES \n')
+                        print(("---")*20)
                         v=int(input())  #este int deberia ser aprueba de error aun no lo es 
                         if v== 1:
                             cha.append(y)
         else:
             stop=1
+            print(("---")*20)
             for y in range(len(names)):
                     if y !=turn and y != value_1:
                         print('player '+names[y]+ ' going to challenge? \n'
                         '0) NO \n'
                         '1) YES \n')
+                        print(("---")*20)
                         v=int(input())  #este int deberia ser aprueba de error aun no lo es 
                         if v== 1:
                             cha.append(value_1)
@@ -131,7 +141,6 @@ def counter(names,turn,participation,players,name_cards):
     stop=0
     while stop!=1:
         print("\n who wishes to counter attack") #aca igual se podria decir que es cada cosa de contra ataque 
-        print(turn)
         for x in range(len(names)):
             if x != turn:
                 ve=x in participation
@@ -142,6 +151,7 @@ def counter(names,turn,participation,players,name_cards):
         if value_1 == 10:
             print("from here I can see their feathers falling")
             stop=1
+            print(("---")*20)
             return 10
         
         else: 
@@ -156,6 +166,7 @@ def counter(names,turn,participation,players,name_cards):
                     print('\t- '+name_cards[x[1]-1])
             print("are you sure you want to fight back")
             print("0) NO\n1) YES")
+            print(("---")*20)
             confi=int(input())
             if confi == 1:
                 stop = 1
@@ -168,6 +179,7 @@ def strike(text):   #https://www.javaer101.com/es/article/14726975.html
     return result
 
 def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas 
+    print(("---")*30)
     name_cards.append("******")
     play=players[turn]
     cards_1=play.cards
