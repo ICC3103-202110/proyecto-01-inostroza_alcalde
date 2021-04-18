@@ -1,5 +1,13 @@
 #este archivo tiene cosas que se imprimen basicas, hace verificaciones basicas, pero nunca altera a clases
 import random
+
+def startup():
+    print(
+    '''
+▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █░█ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
+▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
+    ''')
+
 def election(names,turn,players):
     player=players[turn]
     stop=0

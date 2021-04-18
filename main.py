@@ -21,7 +21,8 @@ assassin = 5
 list=1,2,3,4,5
 '''
 def main():
-    name_cards=['duke','contessa','captain','ambassador','assassin']
+    printer.startup()
+    name_cards=['duke ♕','contessa ♔','captain ⌘','ambassador ✎','assassin ⚔']
     cards=Cards()#creacion de mazo
     stop_2=0
     duke = Duke(1)
@@ -34,7 +35,7 @@ def main():
     while stop_2 !=1: #creacion de los jugadores 
         if stop_2 == 2:
             print ("You have entered an invalid number, please try again")
-        print("with how many players are you going to play, 3 or 4?")
+        print("Select number of players, 3 or 4?\n")
         value=int(input())
         if value<3 or value > 4:
              stop_2=2
