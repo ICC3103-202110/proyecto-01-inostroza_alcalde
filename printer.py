@@ -15,7 +15,7 @@ def election(names,turn,players):
             if player.coins>=7:
                 stop=1
             else:
-                print("INSUFFICIENT COINS TO FULFILL THIS ACTION, PLEASE CHOOSE ANOTHER ACTION")
+                print("INSUFFICIENT COINS TO FULFILL THIS ACTION, PLEASE CHOOSE ANOTHER ACTION \n\n")
         else:
             stop=1
 
@@ -133,6 +133,50 @@ def counter(names,turn):
         return 10
     else: 
         return value_1
+
+def strike(text):   #https://www.javaer101.com/es/article/14726975.html
+    result = ''
+    for c in text:
+        result = result + c + '\u0336'
+    return result
+
+def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas 
+    name_cards.append("******")
+    play=players[turn]
+    cards_1=play.cards
+    coin_1=play.coins
+    print()
+    print("NAME PLAYER             COINS                                      CARDS")
+    for x in range(len(players)):
+        player=player[x]
+        if x != turn:
+            c=player.cards
+            car_1=c[0]
+            car_2=c[1]
+            if car_1[0] == 0:
+                car_1[1] = 5
+            else:
+                car_1[1]-=1
+
+            if car_2[0] == 0:
+                car_2[1]=5
+            else:
+                car_2[1]-=1
+            print(f"%9s               {player.coins}                                     %s, $s " %(player.name,name_cards[car_1[1]],name_cards[car_2[1]]))
+    print(f'\t your coins: {coin_1}')
+    print("your cards in play: ")
+    for x in cards_1:
+        if x[0]==0:
+            val=name_cards(x[1]-1)
+            print('- '+strike(val))
+        else:
+            print('- '+name_cards[x[1]-1])
+
+            
+
+
+                
+
 
                         
             

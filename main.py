@@ -20,7 +20,7 @@ assassin = 5
 list=1,2,3,4,5
 '''
 def main():
-    name_cards=[('duke',1),('contessa',2),('captain',3),('ambassador',4),('assassin',5)]
+    name_cards=['duke','contessa','captain','ambassador','assassin']
     cards=Cards()#creacion de mazo
     stop_2=0
     duke = Duke(1)
@@ -42,9 +42,9 @@ def main():
             all_cards=[]
             for x in range(3):
                 cards.delete_card()
-                card_play=[cards.s_card]
+                card_play=[[1,cards.s_card]]
                 cards.delete_card()
-                card_play.append(cards.s_card)
+                card_play.append([1,cards.s_card])
                 all_cards.append(card_play)
                 print("enter name to player "+str(x+1))
                 name=input()
@@ -53,7 +53,7 @@ def main():
             player_2=Player(names[1],2,all_cards[1])
             player_3=Player(names[2],2,all_cards[2])
             player_4=0
-            players=[player_1,player_2,player_3,player_4]
+            players=[player_1,player_2,player_3]
             stop_2=1
         else:
             stop_2=1
@@ -61,9 +61,9 @@ def main():
             all_cards=[]
             for x in range(4):
                 cards.delete_card()
-                card_play=[cards.s_card]
+                card_play=[[1,cards.s_card]]
                 cards.delete_card()
-                card_play.append(cards.s_card)
+                card_play.append([1,cards.s_card])
                 all_cards.append(card_play)
                 print("enter player name "+str(x+1))
                 name=input()
@@ -79,14 +79,17 @@ def main():
     print("\n")
     print("\n")
     l_names=len(names)
+    turn=0
     while stop_1 != 1:
-        turn=0
+        
         stp=0 
+        print("hola inicio")
         while stp!=1:
             player=players[turn]
             elec= printer.election(names,turn,players)
             if elec==0:
                 player.change_coins(1)
+                print(player.coins)
                 break
             if elec == 1:
                     player.change_coins(-7)
@@ -105,9 +108,11 @@ def main():
             else:
                 if chall<l_names:
                     print("we proceed to counter attacks")
-                    
-        turn +=1
-        if turn>len(names):
+        print(player.cards)            
+        turn += 1
+        print(turn)
+        if turn>len(names)-1:
+            print("hola dos")
             turn=0
 
         
