@@ -83,7 +83,7 @@ def main():
     while stop_1 != 1:
         
         stp=0 
-        print("hola inicio")
+        
         while stp!=1:
             player=players[turn]
             printer.print_all(turn,players,name_cards)
@@ -91,29 +91,28 @@ def main():
             if elec==0:
                 player.change_coins(1)
                 print(player.coins)
-                break
             if elec == 1:
                     player.change_coins(-7)
                     Assassin.killer(contessa,player,name_cards)  ##crear las cartas, aun falta eso 
 
                      
             if elec > 1:
-                win , chall =printer.priority_challeng(names,turn)  #aca se elige quien desafia 
+                win , chall,participation =printer.priority_challeng(names,turn)  #aca se elige quien desafia 
             else:
                 print("\n this action cannot be challenged or countered")
                 break
             if win == 10:
                 print("\n as no one challenged, we proceed to counter attacks")
-                val=printer.counter(names,turn)
-               
+                val=printer.counter(names,turn,participation,players,name_cards)  
             else:
                 if chall<l_names:
                     print("we proceed to counter attacks")
+                    val=printer.counter(names,turn,participation,players,name_cards)
+
         print(player.cards)            
         turn += 1
         print(turn)
         if turn>len(names)-1:
-            print("hola dos")
             turn=0
 
         
