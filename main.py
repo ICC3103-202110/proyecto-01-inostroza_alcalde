@@ -23,7 +23,12 @@ def main():
     name_cards=[('duke',1),('contessa',2),('captain',3),('ambassador',4),('assassin',5)]
     cards=Cards()#creacion de mazo
     stop_2=0
-    list_cards=Cards()
+    duke = Duke(1)
+    contessa = Contessa(2)
+    captain = Captain(3)
+    ambassador = Ambassador(4)
+    assassin = Assassin(5)
+    list_card=[duke,contessa,captain,ambassador,assassin]
     cards.create_cards() 
     while stop_2 !=1: #creacion de los jugadores 
         if stop_2 == 2:
@@ -79,14 +84,14 @@ def main():
         stp=0 
         while stp!=1:
             player=players[turn]
-            elec= printer.election(names,turn)
+            elec= printer.election(names,turn,players)
             if elec==0:
                 player.change_coins(1)
                 break
             if elec == 1:
-                if player.coins >=7:
                     player.change_coins(-7)
-                    Assassin.killer(contessa,player,name_cards)
+                    Assassin.killer(contessa,player,name_cards)  ##crear las cartas, aun falta eso 
+
                      
             if elec > 1:
                 win , chall =printer.priority_challeng(names,turn)  #aca se elige quien desafia 

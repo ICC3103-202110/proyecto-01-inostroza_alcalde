@@ -1,12 +1,24 @@
+#este archivo tiene cosas que se imprimen basicas, hace verificaciones basicas, pero nunca altera a clases
 import random
-def election(names,turn):
-    actions=['CLAIM INCOME','HIT ANOTHER PLAYER','FOREIGN AID','GENERATE TAX',
-             'START EXTORTION','COMMIT MURDER','START TRADE CHANGE']
-    print("      player " +names[turn])
-    print(" Selections played:")
-    for x in range(7):
-        print(str(x)+") "+ actions[x])
-    value = int(input())
+def election(names,turn,players):
+    player=players[turn]
+    stop=0
+    while stop!=1:
+        actions=['CLAIM INCOME','HIT ANOTHER PLAYER','FOREIGN AID','GENERATE TAX',
+                'START EXTORTION','COMMIT MURDER','START TRADE CHANGE']
+        print("      player " +names[turn])
+        print(" Selections played:")
+        for x in range(7):
+            print(str(x)+") "+ actions[x])
+        value = int(input())
+        if value == 1:
+            if player.coins>=7:
+                stop=1
+            else:
+                print("INSUFFICIENT COINS TO FULFILL THIS ACTION, PLEASE CHOOSE ANOTHER ACTION")
+        else:
+            stop=1
+
     print(names[turn]+" has chosen "+actions[value])
     return value
 
