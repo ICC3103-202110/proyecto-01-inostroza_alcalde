@@ -93,43 +93,73 @@ def main():
                 player.change_coins(1)
             if elec == 1: # eleccion que no se puede desafiar o atacar
                     player.change_coins(-7)
-                    Assassin.killer(contessa,player,name_cards)  ##crear las cartas, aun falta eso 
+                    print('which player do you want to hit?')
+                    for x in range(len(names)):
+                        print(f"{x}) {names[x]}")
+                    valu=int(input())
+                    play=players[valu]
+                    play.raise_card(name_cards) ##crear las cartas, aun falta eso 
             if elec > 1:
                 win , chall,participation =printer.priority_challeng(names,turn)  #aca se elige quien desafia 
             else:
                 print("\n this action cannot be challenged or countered")
                 break
             if elec == 3 and win == 10:
-                print ("Tax action not challenged, proceeds to be executed")
+                print ("Tax action not countered, proceeds to be executed")
                 player.change_coins(3)
                 break
-            if win == 10:
-                print("\n as no one challenged, we proceed to counter attacks")
-                val = printer.counter(names,turn,participation,players,name_cards)  
+            ve=0
+            if elec == 2 or elec == 5 or elec == 4:
+                va=1
+                if win == 10:
+                    print("\n as no one challenged, we proceed to counter attacks")
+                    val = printer.counter(names,turn,participation,players,name_cards)  
+                else:
+                    if chall<l_names:
+                        print("we proceed to counter attacks")
+                        val = printer.counter(names,turn,participation,players,name_cards)
+                if val != 10:
+                    win_2 = printer.priority_challeng(names,val)
+                    
+                if win_2 != 10:
+                    print("as two challenges have been generated, it will be chosen when grilling 1")
+                    cha = [[win,turn],[win_2[0],val]]
+                    ve = random.randint(0,1) #first disorder
+                    gg = cha[ve]
+                    print(f"the winner to face {names[gg[1]]} is {names[gg[0]]}")
             else:
-                if chall<l_names:
-                    print("we proceed to counter attacks")
-                    val = printer.counter(names,turn,participation,players,name_cards)
-            if val != 10:
-                win_2 = printer.priority_challeng(names,val)
-                
-            if win_2 != 10:
-                print("as two challenges have been generated, it will be chosen when grilling 1")
-                cha = [[win,turn],[win_2[0],val]]
-                ve = random.randint(0,1) #first disorder
-                gg = cha[ve]
-                print(f"the winner to face {names[gg[1]]} is {names[gg[0]]}")
+                va=0
             stop=1
-        if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
+        if elec>2:
+            veri_chang=True
+            veri_counter=True 
+            if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
 
-            if elec == 3:
-                verification_card = 1
-            elif elec == 4:
-                verification_card = 3
-            elif elec == 5:
-                verification_card = 5
-            elif elec == 6:
-                verification_card = 4
+                if elec == 3:
+                    verification_card = 1
+                elif elec == 4:
+                    verification_card = 3
+                elif elec == 5:
+                    verification_card = 5
+                elif elec == 6:
+                    verification_card = 4
+                play_cards=player.cards
+                if play_cards[0][1] != verification_card and play_cards[1][1]:
+                    print(f'Player {player.name} did not have the card \n')
+                    player.raise_card(name_cards)
+                    veri_chang=False
+                    if val !=10 and va!=0:
+                        print("against attack it will not be carried out player {player.name} did not have the letter")
+                else:
+                    print(f'Player {player.name} did have the card \n')
+                    if val != 0:
+                        print('the counter attacks will be carried out')
+                    play=players[win]
+                    print(f'player {play.name} lost the challenge \n')
+                    play.raise_card(name_cards)
+            if ve==1
+            
+
             
 
 

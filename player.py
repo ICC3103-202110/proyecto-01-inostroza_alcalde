@@ -20,7 +20,7 @@ class Player():
     @coins.setter
     def coins(self,value,__coins):
         if (self.coins + value) < 0:
-            self.__coins = 0 #ver por que esto da error
+            self.__coins = 0 
         else:
             self.__coins += value
 
@@ -29,10 +29,28 @@ class Player():
         if self.__life == True:
              self.__life = False
 
-    def raise_card(self):
-        value = int(input("enter the position of the card you want to turn"))
-        self.cards[value][0] = 0
-        self.cards 
+    def raise_card(self,names_cards): 
+        cards=self.cards
+        stop=0
+        while stop !=1 :
+            values=[]
+            if cards[0][0]==1:
+                print(f"0) {names_cards[cards[0][1]]}")
+                values.append(0)
+            if cards[1][0] == 1:
+                print(f"1) {names_cards[cards[1][1]]} \n")
+                values.append(1)
+            try:
+                value = int(input("enter the position of the card you want to turn"))
+                if value in values==True:
+                    stop=1
+                    break
+                else:
+                    print('selected card is no longer in your deck, try again')
+            except:
+                print('wrong embedded value')
+        cards[value][0] = 0
+        self.cards =cards
 
     def end_game(self):
         self.life = False

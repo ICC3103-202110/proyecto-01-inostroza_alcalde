@@ -1,4 +1,5 @@
 #este archivo tiene cosas que se imprimen basicas, hace verificaciones basicas, pero nunca altera a clases
+#usar clases no es necesario, seria como clavar un clavo con un martillo neumatico, funciona pero ya es mucho 
 import random
 
 def startup():
@@ -14,15 +15,16 @@ def startup():
 def inputverifier(value):
     
     token = 0
-    while token == 0:
-        if  value=="0" or value=="1" or value=="2" or value=="3" or value=="4" or value=="5" or value=="6" or value=="7" or value=="8" or value=="9" or value=="10":
-            value = int(value)
-            token = 1
-            return value
+    values=['0','1','2','3','4','5','6','7','8','9','10']
+   # while token == 0:
+    if value in values == True:
+        value = int(value)
+        token = 1
+        return value
 
-        else:
-            value = input("Invalid input value, please try again\n")
-            token = 0
+    else:
+        value = input("Invalid input value, please try again\n")
+        token = 0
 
 def election(names,turn,players):
     player=players[turn]
