@@ -7,6 +7,22 @@ def startup():
 ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █░█ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
 ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
     ''')
+    print("\nPress any button to start . . .\n")
+    banana = input()
+
+# Checks if value is viable until a valid input is entered
+def inputverifier(value):
+    
+    token = 0
+    while token == 0:
+        if  value=="0" or value=="1" or value=="2" or value=="3" or value=="4" or value=="5" or value=="6" or value=="7" or value=="8" or value=="9" or value=="10":
+            value = int(value)
+            token = 1
+            return value
+
+        else:
+            value = input("Invalid input value, please try again\n")
+            token = 0
 
 def election(names,turn,players):
     player=players[turn]
@@ -220,9 +236,15 @@ def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas
             print('\t- '+name_cards[x[1]-1])
     print('\n')
 
-            
 
+'''
 
+USAR PARA TESTEAR
+
+a = input("Ingrese valor\n")
+print(inputverifier(a))
+
+'''
                 
 
 

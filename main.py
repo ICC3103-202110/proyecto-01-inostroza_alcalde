@@ -20,6 +20,7 @@ ambassador = 4
 assassin = 5
 list=1,2,3,4,5
 '''
+
 def main():
     printer.startup()
     name_cards=['duke ♕','contessa ♔','captain ⌘','ambassador ✎','assassin ⚔']
@@ -48,7 +49,7 @@ def main():
                 cards.delete_card()
                 card_play.append([1,cards.s_card])
                 all_cards.append(card_play)
-                print("enter name to player "+str(x+1))
+                print("Enter player name "+str(x+1))
                 name=input()
                 names.append(name)
             player_1=Player(names[0],2,all_cards[0])
