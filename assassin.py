@@ -7,7 +7,7 @@ class Assassin(Card): #asesino listo
         
         print(player.name +" choose the card you want to discard:")
         c=player.cards
-        for x in 6:
+        for x in range(6):
             if x==c[0][1]:
                 print(name_cards[c[0][1]])
             if x==c[1][1]:
