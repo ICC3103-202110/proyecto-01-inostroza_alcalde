@@ -35,19 +35,20 @@ class Player():
         while stop !=1 :
             values=[]
             if cards[0][0]==1:
-                print(f"0) {names_cards[cards[0][1]]}")
+                print(f"0) {names_cards[cards[0][1]-1]}")
                 values.append(0)
             if cards[1][0] == 1:
-                print(f"1) {names_cards[cards[1][1]]} \n")
+                print(f"1) {names_cards[cards[1][1]-1]} \n")
                 values.append(1)
-            try:
-                value = int(input("enter the position of the card you want to turn"))
-                if value in values==True:
+            val = input("enter the position of the card you want to turn: \n")
+            if val == '1' or val=='0':
+                value=int(val)
+                if cards[value][0]==1:
                     stop=1
                     break
                 else:
                     print('selected card is no longer in your deck, try again')
-            except:
+            else:
                 print('wrong embedded value')
         cards[value][0] = 0
         self.cards =cards

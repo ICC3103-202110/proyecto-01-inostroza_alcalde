@@ -89,13 +89,16 @@ def main():
             player = players[turn]
             printer.print_all(turn,players,name_cards)
             elec = printer.election(names,turn,players)
+            win=10
+            win_2=10
             if elec == 0: # eleccion que no se puede desafiar o atacar
                 player.change_coins(1)
             if elec == 1: # eleccion que no se puede desafiar o atacar
                     player.change_coins(-7)
                     print('which player do you want to hit?')
                     for x in range(len(names)):
-                        print(f"{x}) {names[x]}")
+                        if turn != x:
+                            print(f"{x}) {names[x]}")
                     valu=int(input())
                     play=players[valu]
                     play.raise_card(name_cards) ##crear las cartas, aun falta eso 
@@ -104,10 +107,12 @@ def main():
             else:
                 print("\n this action cannot be challenged or countered")
                 break
+            '''
             if elec == 3 and win == 10:
                 print ("Tax action not countered, proceeds to be executed")
                 player.change_coins(3)
                 break
+            '''
             ve=0
             if elec == 2 or elec == 5 or elec == 4:
                 va=1
@@ -157,7 +162,9 @@ def main():
                     play=players[win]
                     print(f'player {play.name} lost the challenge \n')
                     play.raise_card(name_cards)
-            if ve==1
+            if ve==1: #aca se ve los contrataques 
+                pass
+
             
 
             

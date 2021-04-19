@@ -45,6 +45,14 @@ def election(names,turn,players):
                 print("INSUFFICIENT COINS TO FULFILL THIS ACTION, PLEASE CHOOSE ANOTHER ACTION \n\n")
         else:
             stop=1
+        if value == 5:
+            if player.coins>=3:
+                    stop=1
+            else:
+                print("INSUFFICIENT COINS TO FULFILL THIS ACTION, PLEASE CHOOSE ANOTHER ACTION \n\n")
+        else:
+            stop=1
+
 
     print(names[turn]+" has chosen "+actions[value])
     return value
@@ -186,7 +194,7 @@ def counter(names,turn,participation,players,name_cards):
             cards_1=play.cards
             for x in cards_1:
                 if x[0]==0:
-                    val=name_cards(x[1]-1)
+                    val=name_cards[x[1]-1]
                     print('\t- '+strike(val))
                 else:
                     print('\t- '+name_cards[x[1]-1])
@@ -232,8 +240,8 @@ def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas
     print("your cards in play: ")
     for x in cards_1:
         if x[0]==0:
-            val=name_cards(x[1]-1)
-            print('\t- '+strike(val))
+            val=name_cards[x[1]-1]
+            print('\t- **'+strike(val)+'**')
         else:
             print('\t- '+name_cards[x[1]-1])
     print('\n')
