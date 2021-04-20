@@ -59,7 +59,7 @@ class Player():
 
     def change_coins(self,value):
         val=self.__coins
-        if value==2:
+        if value==-2:
             
             if val+value < 0:
                 self.__coins=0

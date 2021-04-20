@@ -16,14 +16,18 @@ class Ambassador(Card):
                  self.__cards_1 = [6,6]
         else:
              self.__cards_1
+        return
 
            
     def excahnge_card(self,value_1,value_2):
         cards=[value_1,value_2]
         self.__cards_1 = cards #ver por que se cae esto  !!
+        return
 
-    def block_extor(self):
-        self.block_exto=False
+    def block_extotion(self):
+        self.block_exto= False
+        
 
     def restore(self):
         self.__cards_1 = [6,6]
+        return

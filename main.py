@@ -9,7 +9,10 @@ from player     import Player
 import system 
 import printer
 import random
-
+'''
+▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █░█ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
+▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
+'''
 '''
 name in carts
 duke = 1
@@ -137,7 +140,7 @@ def main():
             else:
                 va=0
             stp=1
-        if elec>2:
+        if elec >= 2:
             veri_chang=True
             veri_counter=True 
             
@@ -203,6 +206,8 @@ def main():
                 if top_2 == 1:
                     print(f'Player {player.name} did have the card \n')
                     play_2 = players[win]
+                    c_1=veri_card_1
+                    c_2=veri_card_2
                     print(f'player {play_2.name} lost the challenge \n')
                     play_2.raise_card(name_cards)
                 if top_2 == 0:
@@ -210,6 +215,35 @@ def main():
                     play.raise_card(name_cards)
                     veri_counter = False
                     print('contra ataque no se llevara acabo')
+            if veri_counter == True:
+                if c_1 == 1:
+                    Duke.block_help
+                if c_1 == 5:
+                    Contessa.block_killer
+                if c_1 == 4:
+                    Ambassador.block_extotion
+                if c_2 == 3:
+                    Captain.block_extotion
+            if veri_chang == True:
+                if elec == 3:
+                    Duke.plus_tax
+                if elec == 4:
+                    print('which player do you want to extort?')
+                    for x in range(len(names)):
+                        if turn != x:
+                            print(f"{x}) {names[x]}")
+                    valu=int(input())
+                    play=players[valu]
+                    Captain.extortion(Ambassador,player,play)
+                if elec == 2:
+                    if Duke.block == True:
+                        player.change_coins(2)
+                        Duke.block =True
+                
+
+
+
+
                 
                 
 

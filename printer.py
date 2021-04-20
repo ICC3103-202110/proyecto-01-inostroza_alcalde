@@ -13,18 +13,16 @@ def startup():
 
 # Checks if value is viable until a valid input is entered
 def inputverifier(value):
-    
-    token = 0
     values=['0','1','2','3','4','5','6','7','8','9','10']
    # while token == 0:
     if value in values == True:
         value = int(value)
-        token = 1
+        
         return value
 
     else:
         value = input("Invalid input value, please try again\n")
-        token = 0
+        
 
 def election(names,turn,players):
     player=players[turn]
