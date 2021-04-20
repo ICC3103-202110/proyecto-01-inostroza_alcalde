@@ -19,7 +19,7 @@ class Ambassador(Card):
         return
 
            
-    def excahnge_card(self,value_1,value_2):
+    def excahnge_card(self,duke,cards,player,name_card):
         cards=[value_1,value_2]
         self.__cards_1 = cards #ver por que se cae esto  !!
         return

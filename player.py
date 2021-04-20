@@ -25,9 +25,12 @@ class Player():
             self.__coins += value
 
     @life.setter
-    def life(self,value,__life):
-        if self.__life == True:
+    def life(self):
+        life=self.__life
+        if life == True:
              self.__life = False
+        else:
+            self.__life
 
     def raise_card(self,names_cards): 
         cards=self.cards
@@ -57,7 +60,7 @@ class Player():
         self.life = False
         self.life = False
 
-    def change_coins(self,value):
+    def change_coins(self,value): #esto de aca se deberia cambiar creo, pasa usar el setter 
         val=self.__coins
         if value==-2:
             
@@ -73,6 +76,20 @@ class Player():
                     self.__coins=0
             else:
                 self.__coins=val+value
+
+    def chang_card(self,player,cards,value):
+        cards=self.cards
+        if cards[0][1] == value and cards[0][0] == 1:
+            self.del_card=cards[0][1]
+            cards.delete_card
+            cards[0][1] = cards.s_cards
+            
+        if cards[1][1] == value and cards[1][0] == 1:
+            self.del_card=cards[1][1]
+            cards.delete_card
+            cards[1][1] = cards.s_cards
+        self.cards=cards
+
             
 
 '''   

@@ -33,7 +33,6 @@ def main():
     captain = Captain(3)
     ambassador = Ambassador(4)
     assassin = Assassin(5)
-    list_card=[duke,contessa,captain,ambassador,assassin]
     cards.create_cards() 
     while stop_2 !=1: #creacion de los jugadores 
         if stop_2 == 2:
@@ -156,7 +155,7 @@ def main():
                     verification_card = 4
                 play_cards=player.cards
                 
-                if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card:
+                if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card: #no tiene la carta
                     print(f'Player {player.name} did not have the card \n')
                     player.raise_card(name_cards)
                     veri_chang=False
@@ -169,13 +168,16 @@ def main():
                         top=1
                     if play_cards[1][1] == verification_card and play_cards[1][0] == 1:
                         top=1
-                    if top == 1:
-                        print(f'Player {player.name} did have the card \n')
+                    if top == 1: #aca hay que cambiarle la carta al jugador 
+                        print(f'Player {player.name} did have the card {name_cards[verification_card]}\n')
+                        player.chang_card(player,cards,value)
+                        cards.add_card(player.del_card)
                         if val != 0:
-                            print('the counter attacks will be carried out')
+                            print('the counter attacks will be carried out') # ver este print esta raro
                         play = players[win]
                         print(f'player {play.name} lost the challenge \n')
                         play.raise_card(name_cards)
+
                     else:
                         print(f'Player {player.name} did not have the card \n')
                         player.raise_card(name_cards)
@@ -204,7 +206,9 @@ def main():
                     if play_cards[1][0] == 1:
                         top_2 = 1
                 if top_2 == 1:
-                    print(f'Player {player.name} did have the card \n')
+                    print(f'Player {player.name} did have the card \n') #aca hay que cambiale la carta al jugador 
+                    player.chang_card(player,cards,value)
+                    cards.add_card(player.del_card)
                     play_2 = players[win]
                     c_1=veri_card_1
                     c_2=veri_card_2
@@ -219,14 +223,16 @@ def main():
                 if c_1 == 1:
                     Duke.block_help
                 if c_1 == 5:
-                    Contessa.block_killer
+                    contessa.block_killer
                 if c_1 == 4:
                     Ambassador.block_extotion
                 if c_2 == 3:
-                    Captain.block_extotion
+                    captain.block_extotion
+
             if veri_chang == True:
                 if elec == 3:
                     Duke.plus_tax
+
                 if elec == 4:
                     print('which player do you want to extort?')
                     for x in range(len(names)):
@@ -235,11 +241,13 @@ def main():
                     valu=int(input())
                     play=players[valu]
                     captain.extortion(ambassador,player,play)
+
                 if elec == 2:
                     if duke.block == True:
                         player.change_coins(2)
                     else:
-                        duke.block =True
+                        duke.block = True
+
                 if elec == 5:
                     print('which player do you want to murder?')
                     for x in range(len(names)):
@@ -247,7 +255,12 @@ def main():
                             print(f"{x}) {names[x]}")
                     valu=int(input())
                     play=players[valu]
-                    assassin.killer(player,Contessa,play,name)
+                    assassin.killer(player,contessa,play,name)
+
+                if elec == 6:
+                    pass
+
+
                 
 
 
