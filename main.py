@@ -102,7 +102,7 @@ def main():
                     valu=int(input())
                     play=players[valu]
                     play.raise_card(name_cards) ##crear las cartas, aun falta eso 
-            if elec > 1:
+            if elec > 2:
                 win , chall,participation =printer.priority_challeng(names,turn)  #aca se elige quien desafia 
             else:
                 print("\n this action cannot be challenged or countered")
@@ -132,14 +132,18 @@ def main():
                     ve = random.randint(0,1) #first disorder
                     gg = cha[ve]
                     print(f"the winner to face {names[gg[1]]} is {names[gg[0]]}")
+                    stp=1
+                    break
             else:
                 va=0
-            stop=1
+            stp=1
+        print("hola 1")
         if elec>2:
             veri_chang=True
             veri_counter=True 
+            print("hola 2")
             if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
-
+                print("hola 3")
                 if elec == 3:
                     verification_card = 1
                 elif elec == 4:
@@ -149,21 +153,61 @@ def main():
                 elif elec == 6:
                     verification_card = 4
                 play_cards=player.cards
-                if play_cards[0][1] != verification_card and play_cards[1][1]:
+                print("hola 4")
+                if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card:
                     print(f'Player {player.name} did not have the card \n')
                     player.raise_card(name_cards)
                     veri_chang=False
                     if val !=10 and va!=0:
-                        print("against attack it will not be carried out player {player.name} did not have the letter")
+                        print("against attack it will not be carried out player {player.name} did not have the card")
                 else:
-                    print(f'Player {player.name} did have the card \n')
-                    if val != 0:
-                        print('the counter attacks will be carried out')
-                    play=players[win]
-                    print(f'player {play.name} lost the challenge \n')
-                    play.raise_card(name_cards)
-            if ve==1: #aca se ve los contrataques 
-                pass
+                    print("hola 5")
+                    top=0
+                    if play_cards[0][1] == verification_card and play_cards[0][0] == 1:
+                        top=1
+                    if play_cards[1][1] == verification_card and play_cards[1][0] == 1:
+                        top=1
+                    if top == 1:
+                        print(f'Player {player.name} did have the card \n')
+                        if val != 0:
+                            print('the counter attacks will be carried out')
+                        play=players[win]
+                        print(f'player {play.name} lost the challenge \n')
+                        play.raise_card(name_cards)
+                    else:
+                        print(f'Player {player.name} did not have the card \n')
+                        player.raise_card(name_cards)
+                        veri_chang=False
+                        if val !=10 and va!=0:
+                             print("against attack it will not be carried out player {player.name} did not have the card")
+            if ve==1: #aca se ve los desafios contrataques
+                print("hola 6") 
+                if elec == 2:
+                    veri_card_1=1
+                    veri_card_2=0
+                elif elec == 5:
+                    veri_card_1=2
+                    veri_card_2=0
+                elif elec == 4:
+                    veri_card_1=4
+                    veri_card_2=3
+                play=players[va]
+                print("hola 7")
+                play_cards=play.cards
+                top_2=0
+                if play_cards[0][1] == veri_card_1 or play_cards[0][0] == veri_card_2:
+                    if play_cards[0][0] == 1:
+                        top_2=1
+                if play_cards[1][1] == veri_card_1 or play_cards[1][1] == veri_card_2:
+                    if play_cards[1][0] == 1:
+                        top_2=1
+                if top_2 == 1:
+                    print('hola')
+                    pass
+
+                print(f'Player {player.name} did not have the card \n')
+                player.raise_card(name_cards)
+                
 
             
 

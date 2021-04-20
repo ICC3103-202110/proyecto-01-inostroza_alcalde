@@ -241,7 +241,7 @@ def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas
     for x in cards_1:
         if x[0]==0:
             val=name_cards[x[1]-1]
-            print('\t- **'+strike(val)+'**')
+            print('\t- **'+strike(val)+' **')
         else:
             print('\t- '+name_cards[x[1]-1])
     print('\n')
