@@ -238,7 +238,16 @@ def main():
                 if elec == 2:
                     if Duke.block == True:
                         player.change_coins(2)
+                    else:
                         Duke.block =True
+                if elec == 5:
+                    print('which player do you want to murder?')
+                    for x in range(len(names)):
+                        if turn != x:
+                            print(f"{x}) {names[x]}")
+                    valu=int(input())
+                    play=players[valu]
+                    Assassin.killer(player,Contessa,play,name_cards)
                 
 
 
