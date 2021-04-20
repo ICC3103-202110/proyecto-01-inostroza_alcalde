@@ -160,7 +160,7 @@ def main():
                     player.raise_card(name_cards)
                     veri_chang=False
                     if val != 10 and va != 0:
-                        print("against attack it will not be carried out player {player.name} did not have the card")
+                        print(f"against attack it will not be carried out player {player.name} did not have the card")
                 else:
                     
                     top=0
@@ -183,7 +183,7 @@ def main():
                         player.raise_card(name_cards)
                         veri_chang = False
                         if val != 10 and va != 0:
-                             print("against attack it will not be carried out player {player.name} did not have the card")
+                             print(f"against attack it will not be carried out player {player.name} did not have the card")
             if ve == 1: #aca se ve los desafios contrataques
                  
                 if elec == 2:
@@ -221,7 +221,7 @@ def main():
                     print('contra ataque no se llevara acabo')
             if veri_counter == True:
                 if c_1 == 1:
-                    Duke.block_help
+                    duke.block_help
                 if c_1 == 5:
                     contessa.block_killer
                 if c_1 == 4:
@@ -231,7 +231,7 @@ def main():
 
             if veri_chang == True:
                 if elec == 3:
-                    Duke.plus_tax
+                    duke.plus_tax
 
                 if elec == 4:
                     print('which player do you want to extort?')

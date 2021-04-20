@@ -19,9 +19,55 @@ class Ambassador(Card):
         return
 
            
-    def excahnge_card(self,duke,cards,player,name_card):
-        cards=[value_1,value_2]
-        self.__cards_1 = cards #ver por que se cae esto  !!
+    def excahnge_card(self,duke,cards,player,name_cards):
+        if duke.block == True:
+            all = []
+            val = []
+            va=2
+            cards.delete_card
+            value_1 = cards.s_cards
+            all.append(value_1)
+            cards.delete_card
+            value_2 = cards.s_cards
+            all.append(value_2)
+            p_card = player.Cards
+            if p_card[0][0] == 1:
+                all.append(p_card[0][1])
+            else:
+                all.append('dead card')
+                val.append(2)
+                va=1
+            if p_card[1][0] == 1:
+                all.append(p_card[1][1])
+            else:
+                all.append('dead card')
+                val.append(3) 
+                va=1
+            if len(val)>0:
+                print('Cards already revealed cannot be exchanged\n')
+            stop=0
+            while stop!=1:
+                if len(all)>1:
+                    stop=1
+                    break
+                for x in range(len(all)):
+                    if x == "dead card":
+                        print(str(x)+') '+all[x])
+                    else:
+                        print(f"{x}) {name_cards[all]}")
+                valu=int(input())
+                if valu in val == True:
+                    print('This card is already selected for your deck')
+                else:
+                    val.append(valu)
+            
+
+                
+            
+            
+            self.__cards_1 = cards #ver por que se cae esto  !!
+        else:
+            duke.block= True
         return
 
     def block_extotion(self):
