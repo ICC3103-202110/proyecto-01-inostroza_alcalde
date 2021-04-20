@@ -60,12 +60,25 @@ class Ambassador(Card):
                     print('This card is already selected for your deck')
                 else:
                     val.append(valu)
-            
-
-                
-            
-            
-            self.__cards_1 = cards #ver por que se cae esto  !!
+            for x in range(len(val)):
+                v=0
+                if x == 3:
+                    if va == 1:
+                        c_2=[0,p_card[1][1]]
+                    else:
+                        c_2=[1,p_card[1][1]]
+                elif x == 2:
+                    if val == 1:
+                        c_1=[0,p_card[0][1]]
+                    else:
+                        c_1=[1,p_card[0][1]]
+                else:
+                    if v == 0:
+                        v=1
+                        c_1=[1,all[val[x]]]
+                    else:
+                        c_2=[1,all[val[x]]]
+            player.cards=[c_1,c_2]
         else:
             duke.block= True
         return

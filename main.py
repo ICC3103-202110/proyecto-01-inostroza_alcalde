@@ -53,6 +53,7 @@ def main():
                 print("Enter player name "+str(x+1))
                 name=input()
                 names.append(name)
+            
             player_1=Player(names[0],2,all_cards[0])
             player_2=Player(names[1],2,all_cards[1])
             player_3=Player(names[2],2,all_cards[2])
@@ -85,7 +86,6 @@ def main():
     l_names=len(names)
     turn=0
     while stop_1 != 1:
-        
         stp=0 
         while stp != 1:
             player = players[turn]
@@ -93,6 +93,7 @@ def main():
             elec = printer.election(names,turn,players)
             win=10
             win_2=10
+        
             if elec == 0: # eleccion que no se puede desafiar o atacar
                 player.change_coins(1)
             if elec == 1: # eleccion que no se puede desafiar o atacar
@@ -121,10 +122,12 @@ def main():
                 if win == 10:
                     print("\n as no one challenged, we proceed to counter attacks")
                     val = printer.counter(names,turn,participation,players,name_cards)  
+                    veri_val=val
                 else:
                     if chall<l_names:
                         print("we proceed to counter attacks")
                         val = printer.counter(names,turn,participation,players,name_cards)
+                        veri_val=val
                 if val != 10:
                     win_2 = printer.priority_challeng(names,val)
                     
@@ -140,50 +143,52 @@ def main():
                 va=0
             stp=1
         if elec >= 2:
-            veri_chang=True
-            veri_counter=True 
+            veri_chang = True
+            veri_counter = True
+            if val == 10:
+                veri_counter == False 
             
             if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
-                
-                if elec == 3:
-                    verification_card = 1
-                elif elec == 4:
-                    verification_card = 3
-                elif elec == 5:
-                    verification_card = 5
-                elif elec == 6:
-                    verification_card = 4
-                play_cards=player.cards
-                
-                if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card: #no tiene la carta
-                    print(f'Player {player.name} did not have the card \n')
-                    player.raise_card(name_cards)
-                    veri_chang=False
-                    if val != 10 and va != 0:
-                        print(f"against attack it will not be carried out player {player.name} did not have the card")
-                else:
+                if win != 10:
+                    if elec == 3:
+                        verification_card = 1
+                    elif elec == 4:
+                        verification_card = 3
+                    elif elec == 5:
+                        verification_card = 5
+                    elif elec == 6:
+                        verification_card = 4
+                    play_cards=player.cards
                     
-                    top=0
-                    if play_cards[0][1] == verification_card and play_cards[0][0] == 1:
-                        top=1
-                    if play_cards[1][1] == verification_card and play_cards[1][0] == 1:
-                        top=1
-                    if top == 1: #aca hay que cambiarle la carta al jugador 
-                        print(f'Player {player.name} did have the card {name_cards[verification_card]}\n')
-                        player.chang_card(player,cards,value)
-                        cards.add_card(player.del_card)
-                        if val != 0:
-                            print('the counter attacks will be carried out') # ver este print esta raro
-                        play = players[win]
-                        print(f'player {play.name} lost the challenge \n')
-                        play.raise_card(name_cards)
-
-                    else:
+                    if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card: #no tiene la carta
                         print(f'Player {player.name} did not have the card \n')
                         player.raise_card(name_cards)
-                        veri_chang = False
+                        veri_chang=False
                         if val != 10 and va != 0:
-                             print(f"against attack it will not be carried out player {player.name} did not have the card")
+                            print(f"against attack it will not be carried out player {player.name} did not have the card")
+                    else:
+                        
+                        top=0
+                        if play_cards[0][1] == verification_card and play_cards[0][0] == 1:
+                            top=1
+                        if play_cards[1][1] == verification_card and play_cards[1][0] == 1:
+                            top=1
+                        if top == 1: #aca hay que cambiarle la carta al jugador 
+                            print(f'Player {player.name} did have the card {name_cards[verification_card]}\n')
+                            player.chang_card(cards,value)
+                            cards.add_card(player.del_card)
+                            if val != 0:
+                                print('the counter attacks will be carried out') # ver este print esta raro
+                            play = players[win]
+                            print(f'player {play.name} lost the challenge \n')
+                            play.raise_card(name_cards)
+
+                        else:
+                            print(f'Player {player.name} did not have the card \n')
+                            player.raise_card(name_cards)
+                            veri_chang = False
+                            if val != 10 and va != 0:
+                                print(f"against attack it will not be carried out player {player.name} did not have the card")
             if ve == 1: #aca se ve los desafios contrataques
                  
                 if elec == 2:
@@ -207,9 +212,9 @@ def main():
                         top_2 = 1
                 if top_2 == 1:
                     print(f'Player {player.name} did have the card \n') #aca hay que cambiale la carta al jugador 
-                    player.chang_card(player,cards,value)
+                    player.chang_card(cards,value)
                     cards.add_card(player.del_card)
-                    play_2 = players[win]
+                    play_2 = players[win_2]
                     c_1=veri_card_1
                     c_2=veri_card_2
                     print(f'player {play_2.name} lost the challenge \n')
@@ -258,7 +263,8 @@ def main():
                     assassin.killer(player,contessa,play,name)
 
                 if elec == 6:
-                    pass
+                    print("hola")
+                    ambassador.excahnge_card(duke,cards,player,name_cards)
 
 
                 
