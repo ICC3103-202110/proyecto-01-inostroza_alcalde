@@ -9,33 +9,32 @@ def startup():
 ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
     ''')
     print("\nPress any button to start . . .\n")
-    banana = input()
+    input()
 
 # Checks if value is viable until a valid input is entered
 def inputverifier(value):
-    values=['0','1','2','3','4','5','6','7','8','9','10']
-   # while token == 0:
-    if value in values == True:
-        value = int(value)
-        
-        return value
+    token = 0
+    while token == 0:
+        if value == "0" or value == "1" or value == "2" or value == "3" or value == "4" or value == "5" or value == "6" or value == "7" or value == "8" or value == "9" or value == "10":
+            value = int(value)
+            return value
 
-    else:
-        value = input("Invalid input value, please try again\n")
-        
+        else:
+            value = input("Invalid input value, please try again\n")
+            token = 0
 
 def election(names,turn,players):
     player=players[turn]
     stop=0
     while stop!=1:
-        actions=['CLAIM INCOME','HIT ANOTHER PLAYER','FOREIGN AID','GENERATE TAX',
-                'START EXTORTION','COMMIT MURDER','START TRADE CHANGE']
+        actions=['CLAIM INCOME ★','HIT ANOTHER PLAYER ✖','FOREIGN AID ☻','GENERATE TAX $',
+                'START EXTORTION ⍗','ASSASSINATE ⚔','START TRADE CHANGE ⇆']
         print("      player " +names[turn])
         print(" Selections played:")
         for x in range(7):
             print(str(x)+") "+ actions[x])
         print(("---")*30)
-        value = int(input())
+        value = inputverifier(input())
         if value == 1:
             if player.coins>=7:
                 stop=1
@@ -69,7 +68,7 @@ def answer(name,value):
         print("0) TO CHALLENGE             \n")
     if value <5:
         print(f"1) COUNTER                  \n")
-    res=int(input())
+    res= inputverifier(input())
     return res
 '''
 def challenge_message (name):
@@ -80,7 +79,7 @@ def counter_messenge (name,card):
 '''
 def result_counter (value):
     if value == True:
-        print("Youe win the counter attack")
+        print("You win the counter attack")
     else:
         print("You lose the counter attack")
 
@@ -88,7 +87,7 @@ def result_challenge(name,value):
     if value == True:
         print(f"You lose the challenge, the player {name} had the character")
     else:
-        print(f"You win the challenge, the player {name} no had the character")
+        print(f"You win the challenge, the player {name} didn't have the character")
 '''
 def verification_counter(name,value):
     if value == True:
@@ -106,7 +105,7 @@ def priority_challeng(names,turn): #esto ya esta listo
 
     print("10) We are all chickens")
     print(("---")*20)
-    value_1=int(input())  #este int deberia ser aprueba de error aun no lo es 
+    value_1= inputverifier(input()) #fixed
     if value_1 == 10:
         print("from here I can see their feathers falling")
         return 10 , 0, 0
@@ -130,7 +129,7 @@ def priority_challeng(names,turn): #esto ya esta listo
 
             print("10) We are all chickens")
             print(("---")*20)
-            value_2=int(input())  #este int deberia ser aprueba de error aun no lo es 
+            value_2= inputverifier(input()) #fixed
             if value_2 == 10:
                 
                 return value_1 , len(cha),participation
@@ -145,7 +144,7 @@ def priority_challeng(names,turn): #esto ya esta listo
                         '0) NO \n'
                         '1) YES \n')
                         print(("---")*20)
-                        v=int(input())  #este int deberia ser aprueba de error aun no lo es 
+                        v= inputverifier(input())  #fixed
                         if v== 1:
                             cha.append(y)
         else:
@@ -157,7 +156,7 @@ def priority_challeng(names,turn): #esto ya esta listo
                         '0) NO \n'
                         '1) YES \n')
                         print(("---")*20)
-                        v=int(input())  #este int deberia ser aprueba de error aun no lo es 
+                        v= inputverifier(input())  #fixed
                         if v== 1:
                             cha.append(value_1)
                             cha.append(y)
@@ -181,7 +180,7 @@ def counter(names,turn,participation,players,name_cards):
                 if  ve != True:
                     print(f'{x}) {names[x]}')
         print("10) We are all chickens")
-        value_1=int(input())  #este int deberia ser aprueba de error aun no lo es 
+        value_1= inputverifier(input())  #fixed
         if value_1 == 10:
             print("from here I can see their feathers falling")
             stop=1
@@ -201,7 +200,7 @@ def counter(names,turn,participation,players,name_cards):
             print("are you sure you want to fight back")
             print("0) NO\n1) YES")
             print(("---")*20)
-            confi=int(input())
+            confi= inputverifier(input())
             if confi == 1:
                 stop = 1
     return value_1

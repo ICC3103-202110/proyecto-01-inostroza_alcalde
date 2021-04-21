@@ -38,7 +38,7 @@ def main():
         if stop_2 == 2:
             print ("You have entered an invalid number, please try again")
         print("Select number of players, 3 or 4?\n")
-        value=int(input())
+        value= printer.inputverifier(input())
         if value<3 or value > 4:
              stop_2=2
         elif value ==3:
@@ -92,7 +92,6 @@ def main():
             printer.print_all(turn,players,name_cards)
             elec = printer.election(names,turn,players)
             win=10
-            val=10
             win_2=10
         
             if elec == 0: # eleccion que no se puede desafiar o atacar
@@ -103,7 +102,7 @@ def main():
                     for x in range(len(names)):
                         if turn != x:
                             print(f"{x}) {names[x]}")
-                    valu=int(input())
+                    valu= printer.inputverifier(input())
                     play=players[valu]
                     play.raise_card(name_cards) ##crear las cartas, aun falta eso 
             if elec > 2:
@@ -143,12 +142,11 @@ def main():
             else:
                 va=0
             stp=1
-        
         if elec >= 2:
             veri_chang = True
             veri_counter = True
             if val == 10:
-                veri_counter = False 
+                veri_counter == False 
             
             if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
                 if win != 10:
@@ -245,7 +243,7 @@ def main():
                     for x in range(len(names)):
                         if turn != x:
                             print(f"{x}) {names[x]}")
-                    valu=int(input())
+                    valu= printer.inputverifier(input())
                     play=players[valu]
                     captain.extortion(ambassador,player,play)
 
@@ -260,7 +258,7 @@ def main():
                     for x in range(len(names)):
                         if turn != x:
                             print(f"{x}) {names[x]}")
-                    valu=int(input())
+                    valu= printer.inputverifier(input())
                     play=players[valu]
                     assassin.killer(player,contessa,play,name)
 
