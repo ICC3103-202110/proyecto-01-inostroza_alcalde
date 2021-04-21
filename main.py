@@ -92,6 +92,7 @@ def main():
             printer.print_all(turn,players,name_cards)
             elec = printer.election(names,turn,players)
             win=10
+            val=10
             win_2=10
         
             if elec == 0: # eleccion que no se puede desafiar o atacar
@@ -142,11 +143,12 @@ def main():
             else:
                 va=0
             stp=1
+        
         if elec >= 2:
             veri_chang = True
             veri_counter = True
             if val == 10:
-                veri_counter == False 
+                veri_counter = False 
             
             if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
                 if win != 10:

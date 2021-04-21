@@ -84,12 +84,12 @@ class Player():
         if cards[0][1] == value and cards[0][0] == 1:
             self.del_card=cards[0][1]
             cards_1.delete_card
-            cards[0][1] = cards_1.s_cards
+            cards[0][1] = cards_1.s_card
             
         if cards[1][1] == value and cards[1][0] == 1:
             self.del_card=cards[1][1]
             cards_1.delete_card
-            cards[1][1] = cards_1.s_cards
+            cards[1][1] = cards_1.s_card
         self.cards=cards
 
 
