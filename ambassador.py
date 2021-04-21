@@ -20,7 +20,7 @@ class Ambassador(Card):
         return
 
            
-    def excahnge_card(self,duke,cards,player,name_cards):
+    def exchange_card(self,duke,cards,player,name_cards):
         if duke.block == True:
             all = []
             val = []

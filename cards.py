@@ -1,9 +1,9 @@
 import random
-class Cards(): #cartas listo 
+class Cards(): #Cards ready
       def __init__(self,card=0):
              self.card=card
 
-      def create_cards(self): #create a cards
+      def create_cards(self): #Creates cards
          list_1 = list(range(1,6))
          list_2 = list_1[:]
          list_3 = list_1[:]
@@ -12,7 +12,7 @@ class Cards(): #cartas listo
          random.shuffle(table) #second disorder 
          self.cards = table
 
-      def delete_card(self): #para sacar cartas del  mazo
+      def delete_card(self): #Takes out cards of the deck
             cards=self.cards
             self.s_card = cards[0]
             cards.pop(0)

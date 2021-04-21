@@ -148,7 +148,7 @@ def main():
             if val == 10:
                 veri_counter == False 
             
-            if ve == 0 and elec >2: #aca vamos a ver los desafio de eleccion 1
+            if ve == 0 and elec >2: #Checks challanges for selection 1
                 if win != 10:
                     if elec == 3:
                         verification_card = 1
@@ -160,7 +160,7 @@ def main():
                         verification_card = 4
                     play_cards=player.cards
                     
-                    if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card: #no tiene la carta
+                    if play_cards[0][1] != verification_card and play_cards[1][1] != verification_card: #Doesn't have the card
                         print(f'Player {player.name} did not have the card \n')
                         player.raise_card(name_cards)
                         veri_chang=False
@@ -189,7 +189,7 @@ def main():
                             veri_chang = False
                             if val != 10 and va != 0:
                                 print(f"against attack it will not be carried out player {player.name} did not have the card")
-            if ve == 1: #aca se ve los desafios contrataques
+            if ve == 1: #Challenges counterattacks
                  
                 if elec == 2:
                     veri_card_1 = 1
@@ -263,8 +263,7 @@ def main():
                     assassin.killer(player,contessa,play,name)
 
                 if elec == 6:
-                    print("hola") # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ELIMINAR !!!!!!!!!!!!!!!!!!!!!!!!!!
-                    ambassador.excahnge_card(duke,cards,player,name_cards)
+                    ambassador.exchange_card(duke,cards,player,name_cards)
 
 
                 

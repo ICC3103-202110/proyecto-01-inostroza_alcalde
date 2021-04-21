@@ -1,12 +1,12 @@
 from card import Card
-class Duke(Card): #duke esta listo 
+class Duke(Card): #Duke Ready
     def __init__(self,name):
        super().__init__(name)
        self.block = True
 
     def block_help(self):
-         self.block = False  #se va a necesitar cambiarse fuera de la clase 
+         self.block = False  #Needs to be changed outside the class
          
     def plus_tax(self,player):
          player.change_coins(3)
-    # metodos definidos para el duke 
+    # Duke Methods:
