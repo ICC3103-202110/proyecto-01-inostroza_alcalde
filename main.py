@@ -26,7 +26,7 @@ list=1,2,3,4,5
 def main():
     printer.startup()
     name_cards=['duke ♕','contessa ♔','captain ⌘','ambassador ✎','assassin ⚔']
-    cards=Cards()#creacion de mazo
+    cards=Cards() #Deck generation
     stop_2=0
     duke = Duke(1)
     contessa = Contessa(2)
@@ -34,7 +34,7 @@ def main():
     ambassador = Ambassador(4)
     assassin = Assassin(5)
     cards.create_cards() 
-    while stop_2 !=1: #creacion de los jugadores 
+    while stop_2 !=1: #Player generation
         if stop_2 == 2:
             print ("You have entered an invalid number, please try again")
         print("Select number of players, 3 or 4?\n")
@@ -70,7 +70,7 @@ def main():
                 cards.delete_card()
                 card_play.append([1,cards.s_card])
                 all_cards.append(card_play)
-                print("enter player name "+str(x+1))
+                print("Enter player name "+str(x+1))
                 name=input()
                 names.append(name)
             player_1=Player(names[0],2,all_cards[0])
@@ -94,11 +94,11 @@ def main():
             win=10
             win_2=10
         
-            if elec == 0: # eleccion que no se puede desafiar o atacar
+            if elec == 0: # Selection cannot be challanged or countered
                 player.change_coins(1)
-            if elec == 1: # eleccion que no se puede desafiar o atacar
+            if elec == 1: # Selection cannot be challanged or countered
                     player.change_coins(-7)
-                    print('which player do you want to hit?')
+                    print('Which player do you want to hit?')
                     for x in range(len(names)):
                         if turn != x:
                             print(f"{x}) {names[x]}")
@@ -106,7 +106,7 @@ def main():
                     play=players[valu]
                     play.raise_card(name_cards) ##crear las cartas, aun falta eso 
             if elec > 2:
-                win , chall,participation =printer.priority_challeng(names,turn)  #aca se elige quien desafia 
+                win , chall,participation =printer.priority_challeng(names,turn)  # Picks challenger priority
             else:
                 print("\n this action cannot be challenged or countered")
                 break
@@ -263,7 +263,7 @@ def main():
                     assassin.killer(player,contessa,play,name)
 
                 if elec == 6:
-                    print("hola")
+                    print("hola") # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ELIMINAR !!!!!!!!!!!!!!!!!!!!!!!!!!
                     ambassador.excahnge_card(duke,cards,player,name_cards)
 
 

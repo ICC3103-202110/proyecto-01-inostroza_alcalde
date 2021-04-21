@@ -1,5 +1,4 @@
-#este archivo tiene cosas que se imprimen basicas, hace verificaciones basicas, pero nunca altera a clases
-#usar clases no es necesario, seria como clavar un clavo con un martillo neumatico, funciona pero ya es mucho 
+#This py is in charge of printing various things, and verifying basic inputs, but it doesn't alter any class
 import random
 
 def startup():
@@ -96,7 +95,7 @@ def verification_counter(name,value):
         print(f"The player {name} has attacked your decision")
 '''
 
-def priority_challeng(names,turn): #esto ya esta listo
+def priority_challeng(names,turn):
     participation=[]
     print("challenge priority is set, who of you dares to challenge player " + names[turn] +" ?")
     for x in range(len(names)):
@@ -104,8 +103,8 @@ def priority_challeng(names,turn): #esto ya esta listo
             print(f"{x}) {names[x]}")
 
     print("10) We are all chickens")
-    print(("---")*20)
-    value_1= inputverifier(input()) #fixed
+    print(("---")*30)
+    value_1= inputverifier(input())
     if value_1 == 10:
         print("from here I can see their feathers falling")
         return 10 , 0, 0
@@ -116,7 +115,7 @@ def priority_challeng(names,turn): #esto ya esta listo
     while stop!=1:
         if len(names)>3:
             stop=1
-            print(("---")*20)
+            print(("---")*30)
             for y in range(len(names)):
                 print()
                 if y !=turn and y != value_1: #no recuerdo para que servia esto, revisar 
@@ -128,8 +127,8 @@ def priority_challeng(names,turn): #esto ya esta listo
                     print(str(y)+') '+names[y])
 
             print("10) We are all chickens")
-            print(("---")*20)
-            value_2= inputverifier(input()) #fixed
+            print(("---")*30)
+            value_2= inputverifier(input())
             if value_2 == 10:
                 
                 return value_1 , len(cha),participation
@@ -137,26 +136,26 @@ def priority_challeng(names,turn): #esto ya esta listo
                 cha.append(value_1)
                 cha.append(value_2)
                 participation.append(value_2)
-            print(("---")*20)
+            print(("---")*30)
             for y in range(len(names)):
                     if y !=turn and y != value_1 and y != value_2:
                         print('player '+names[y]+ ' going to challenge? \n'
                         '0) NO \n'
                         '1) YES \n')
-                        print(("---")*20)
-                        v= inputverifier(input())  #fixed
+                        print(("---")*30)
+                        v= inputverifier(input())
                         if v== 1:
                             cha.append(y)
         else:
             stop=1
-            print(("---")*20)
+            print(("---")*30)
             for y in range(len(names)):
                     if y !=turn and y != value_1:
                         print('player '+names[y]+ ' going to challenge? \n'
                         '0) NO \n'
                         '1) YES \n')
-                        print(("---")*20)
-                        v= inputverifier(input())  #fixed
+                        print(("---")*30)
+                        v= inputverifier(input())
                         if v== 1:
                             cha.append(value_1)
                             cha.append(y)
@@ -164,7 +163,7 @@ def priority_challeng(names,turn): #esto ya esta listo
                         else:
                             return value_1 , len(cha),participation
         print("It seems that we have more than one brave, the challenge refers")
-        random.shuffle(cha) #first disorder
+        random.shuffle(cha) #First Random Shuffle
         win=cha[0]
         print("the winner to face "+names[turn]+" is "+names[win])
         return win,len(cha),participation
@@ -180,11 +179,11 @@ def counter(names,turn,participation,players,name_cards):
                 if  ve != True:
                     print(f'{x}) {names[x]}')
         print("10) We are all chickens")
-        value_1= inputverifier(input())  #fixed
+        value_1= inputverifier(input())
         if value_1 == 10:
             print("from here I can see their feathers falling")
             stop=1
-            print(("---")*20)
+            print(("---")*30)
             return 10
         
         else: 
@@ -199,7 +198,7 @@ def counter(names,turn,participation,players,name_cards):
                     print('\t- '+name_cards[x[1]-1])
             print("are you sure you want to fight back")
             print("0) NO\n1) YES")
-            print(("---")*20)
+            print(("---")*30)
             confi= inputverifier(input())
             if confi == 1:
                 stop = 1
@@ -211,7 +210,7 @@ def strike(text):   #https://www.javaer101.com/es/article/14726975.html
         result = result + c + '\u0336'
     return result
 
-def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas 
+def print_all(turn,players,name_cards):  #Prints everyone's cards and coins
     print(("---")*30)
     name_cards.append("******")
     play=players[turn]
@@ -251,7 +250,7 @@ def print_all(turn,players,name_cards):  #imprime cartas de todos y monedas
 
 '''
 
-USAR PARA TESTEAR
+input verifier works as shown :
 
 a = input("Ingrese valor\n")
 print(inputverifier(a))
