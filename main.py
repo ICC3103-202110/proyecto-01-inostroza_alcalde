@@ -80,7 +80,6 @@ def main():
             player_4=Player(names[3],2,all_cards[3])
             players=[player_1,player_2,player_3,player_4]
         
-    stop=0
     stop_1=0
     print("\n")
     print("\n")
@@ -135,8 +134,14 @@ def main():
                         val = printer.counter(names,turn,participation,players,name_cards)
                 if val != 10:
                     win_2 = printer.priority_challeng(names,val)
-                    
-                if win_2[0] != 10:
+                veri=0
+                if type(win_2)==int:
+                    if win_2 != 10:
+                        veri=1
+                else:
+                    if win_2[0] != 10:
+                        veri =1    
+                if veri == 1:
                     print(
                     "As two challenges have been generated,"
                     " it will be chosen when grilling 1"
