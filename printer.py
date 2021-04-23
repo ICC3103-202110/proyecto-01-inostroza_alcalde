@@ -1,14 +1,14 @@
-#This py is in charge of printing various things, and verifying basic inputs, but it doesn't alter any class
 import random
-
+#This py is in charge of printing and basic verifications, but it never modifies any class
 def startup():
     print(
     '''
-▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █░█ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
+▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █ █ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
 ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
     ''')
     print("\nPress any button to start . . .\n")
     input()
+
 
 # Checks if value is viable until a valid input is entered
 def inputverifier(value):
@@ -67,7 +67,7 @@ def answer(name,value):
         print("0) TO CHALLENGE             \n")
     if value <5:
         print(f"1) COUNTER                  \n")
-    res= inputverifier(input())
+    res=inputverifier(input())
     return res
 '''
 def challenge_message (name):
@@ -86,7 +86,7 @@ def result_challenge(name,value):
     if value == True:
         print(f"You lose the challenge, the player {name} had the character")
     else:
-        print(f"You win the challenge, the player {name} didn't have the character")
+        print(f"You win the challenge, the player {name} no had the character")
 '''
 def verification_counter(name,value):
     if value == True:
@@ -95,7 +95,7 @@ def verification_counter(name,value):
         print(f"The player {name} has attacked your decision")
 '''
 
-def priority_challeng(names,turn):
+def priority_challeng(names,turn): #Ready
     participation=[]
     print("challenge priority is set, who of you dares to challenge player " + names[turn] +" ?")
     for x in range(len(names)):
@@ -107,7 +107,7 @@ def priority_challeng(names,turn):
     value_1= inputverifier(input())
     if value_1 == 10:
         print("from here I can see their feathers falling")
-        return 10 , 0, 0
+        return 10 , 0, [10]
     else:
         stop=0
         cha=[]
@@ -118,8 +118,8 @@ def priority_challeng(names,turn):
             print(("---")*30)
             for y in range(len(names)):
                 print()
-                if y !=turn and y != value_1: #no recuerdo para que servia esto, revisar 
-                    print(names[y])
+                if y !=turn and y != value_1: #Pending . . .
+                    print('player' + names[y])
                     
             print("are they chickens? won't they challenge it?")
             for y in range(len(names)):
@@ -163,7 +163,7 @@ def priority_challeng(names,turn):
                         else:
                             return value_1 , len(cha),participation
         print("It seems that we have more than one brave, the challenge refers")
-        random.shuffle(cha) #First Random Shuffle
+        random.shuffle(cha) #first disorder
         win=cha[0]
         print("the winner to face "+names[turn]+" is "+names[win])
         return win,len(cha),participation
@@ -172,10 +172,10 @@ def counter(names,turn,participation,players,name_cards):
     print()
     stop=0
     while stop!=1:
-        print("\n who wishes to counter attack") #aca igual se podria decir que es cada cosa de contra ataque 
+        print("\n who wishes to counter attack") #Counter attacks
         for x in range(len(names)):
             if x != turn:
-                ve=x in participation
+                ve = x in participation
                 if  ve != True:
                     print(f'{x}) {names[x]}')
         print("10) We are all chickens")
@@ -196,7 +196,7 @@ def counter(names,turn,participation,players,name_cards):
                     print('\t- '+strike(val))
                 else:
                     print('\t- '+name_cards[x[1]-1])
-            print("are you sure you want to fight back")
+            print("Are you sure you want to fight back?")
             print("0) NO\n1) YES")
             print(("---")*30)
             confi= inputverifier(input())
@@ -236,39 +236,19 @@ def print_all(turn,players,name_cards):  #Prints everyone's cards and coins
                 car_2[1]-=1
             
             print(f"%9s               {player.coins}                            {name_cards[car_1[1]]} , {name_cards[car_2[1]]} " %player.name)
+    print(f"It's {play.name}'s turn")
     print(f'\nyour coins: {coin_1}')
-    print("your cards in play: ")
+    
+    print("Your cards in play: ")
     for x in cards_1:
         if x[0]==0:
             val=name_cards[x[1]-1]
             print('\t- **'+strike(val)+' **')
         else:
-            print('\t- '+name_cards[x[1]-1])
+            print('\t- '+ str(name_cards[x[1]-1]))
     print('\n')
-   
+    
 
-
-'''
-
-input verifier works as shown :
-
-a = input("Ingrese valor\n")
-print(inputverifier(a))
-
-'''
-                
-
-
-                        
-            
-
-
-
-
-
-        
-
-   
 
 
 

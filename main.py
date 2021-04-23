@@ -9,8 +9,9 @@ from player     import Player
 import system 
 import printer
 import random
+
 '''
-▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █░█ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
+▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █ █ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
 ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
 '''
 '''
@@ -26,7 +27,7 @@ list=1,2,3,4,5
 def main():
     printer.startup()
     name_cards=['duke ♕','contessa ♔','captain ⌘','ambassador ✎','assassin ⚔']
-    cards=Cards() #Deck generation
+    cards=Cards() #Deck creation
     stop_2=0
     duke = Duke(1)
     contessa = Contessa(2)
@@ -34,7 +35,7 @@ def main():
     ambassador = Ambassador(4)
     assassin = Assassin(5)
     cards.create_cards() 
-    while stop_2 !=1: #Player generation
+    while stop_2 !=1: #Player creation
         if stop_2 == 2:
             print ("You have entered an invalid number, please try again")
         print("Select number of players, 3 or 4?\n")
@@ -88,15 +89,17 @@ def main():
     while stop_1 != 1:
         stp=0 
         while stp != 1:
+            ve=0
             player = players[turn]
             printer.print_all(turn,players,name_cards)
             elec = printer.election(names,turn,players)
             win=10
+            val=10
             win_2=10
         
-            if elec == 0: # Selection cannot be challanged or countered
+            if elec == 0: # Election can't be challenged or countered
                 player.change_coins(1)
-            if elec == 1: # Selection cannot be challanged or countered
+            if elec == 1: # Election can't be challenged or countered
                     player.change_coins(-7)
                     print('Which player do you want to hit?')
                     for x in range(len(names)):
@@ -104,52 +107,57 @@ def main():
                             print(f"{x}) {names[x]}")
                     valu= printer.inputverifier(input())
                     play=players[valu]
-                    play.raise_card(name_cards) ##crear las cartas, aun falta eso 
+                    play.raise_card(name_cards) ##Creates cards
             if elec > 2:
-                win , chall,participation =printer.priority_challeng(names,turn)  # Picks challenger priority
+                win , chall,participation =printer.priority_challeng(names,turn)  #Picks priority
             else:
-                print("\n this action cannot be challenged or countered")
-                break
+                if elec != 2:
+                    print("\n This action cannot be challenged or countered")
+                    break
+                else:
+                    participation=[10]
             '''
             if elec == 3 and win == 10:
                 print ("Tax action not countered, proceeds to be executed")
                 player.change_coins(3)
                 break
             '''
-            ve=0
+            
             if elec == 2 or elec == 5 or elec == 4:
                 va=1
                 if win == 10:
-                    print("\n as no one challenged, we proceed to counter attacks")
+                    print("\n as no one challenged, we proceed with the counter attacks")
                     val = printer.counter(names,turn,participation,players,name_cards)  
                     veri_val=val
                 else:
                     if chall<l_names:
-                        print("we proceed to counter attacks")
+                        print("We proceed with the counter attacks")
                         val = printer.counter(names,turn,participation,players,name_cards)
                         veri_val=val
                 if val != 10:
                     win_2 = printer.priority_challeng(names,val)
                     
                 if win_2 != 10:
-                    print("as two challenges have been generated, it will be chosen when grilling 1")
+                    print("As two challenges have been generated, it will be chosen when grilling 1")
                     cha = [[win,turn],[win_2[0],val]]
                     ve = random.randint(0,1) #first disorder
                     gg = cha[ve]
-                    print(f"the winner to face {names[gg[1]]} is {names[gg[0]]}")
+                    print(f"The winner to face {names[gg[1]-1]} is {names[gg[0]-1]}")
                     stp=1
                     break
             else:
                 va=0
             stp=1
+        
         if elec >= 2:
             veri_chang = True
             veri_counter = True
             if val == 10:
-                veri_counter == False 
+                veri_counter = False 
             
-            if ve == 0 and elec >2: #Checks challanges for selection 1
+            if ve == 0 and elec >2: #Challenges election 1
                 if win != 10:
+                    print("---"*30)
                     if elec == 3:
                         verification_card = 1
                     elif elec == 4:
@@ -173,14 +181,14 @@ def main():
                             top=1
                         if play_cards[1][1] == verification_card and play_cards[1][0] == 1:
                             top=1
-                        if top == 1: #aca hay que cambiarle la carta al jugador 
-                            print(f'Player {player.name} did have the card {name_cards[verification_card]}\n')
+                        if top == 1: # Here it changes player cards
+                            print(f'Player {player.name} did have the card {name_cards[verification_card-1]}\n')
+                            print('Starting card exchange, this will be reflected in the next round')
                             player.chang_card(cards,value)
-                            cards.add_card(player.del_card)
                             if val != 0:
-                                print('the counter attacks will be carried out') # ver este print esta raro
+                                print('The counter attacks will be carried out') # Check this print later
                             play = players[win]
-                            print(f'player {play.name} lost the challenge \n')
+                            print(f'Player {play.name} lost the challenge \n')
                             play.raise_card(name_cards)
 
                         else:
@@ -189,7 +197,7 @@ def main():
                             veri_chang = False
                             if val != 10 and va != 0:
                                 print(f"against attack it will not be carried out player {player.name} did not have the card")
-            if ve == 1: #Challenges counterattacks
+            if ve == 1: #Checks challenges to counter attacks
                  
                 if elec == 2:
                     veri_card_1 = 1
@@ -211,20 +219,30 @@ def main():
                     if play_cards[1][0] == 1:
                         top_2 = 1
                 if top_2 == 1:
-                    print(f'Player {player.name} did have the card \n') #aca hay que cambiale la carta al jugador 
+                    print(f'Player {player.name} did have the card \n') #Changes player cards
+                    print('Starting card exchange, this will be reflected in the next round')
                     player.chang_card(cards,value)
-                    cards.add_card(player.del_card)
                     play_2 = players[win_2]
                     c_1=veri_card_1
                     c_2=veri_card_2
-                    print(f'player {play_2.name} lost the challenge \n')
+                    print(f'Player {play_2.name} lost the challenge \n')
                     play_2.raise_card(name_cards)
                 if top_2 == 0:
                     print(f'Player {player.name} did not have the card \n')
                     play.raise_card(name_cards)
                     veri_counter = False
-                    print('contra ataque no se llevara acabo')
+                    print('against attack will not be carried out')
             if veri_counter == True:
+                if elec == 2:
+                    c_1 = 1
+                    c_2 = 0
+                elif elec == 5:
+                    c_1 = 2
+                    c_2 = 0
+                elif elec == 4:
+                    c_1 = 4
+                    c_2 = 3
+
                 if c_1 == 1:
                     duke.block_help
                 if c_1 == 5:
@@ -236,10 +254,10 @@ def main():
 
             if veri_chang == True:
                 if elec == 3:
-                    duke.plus_tax
+                    duke.plus_tax(player)
 
                 if elec == 4:
-                    print('which player do you want to extort?')
+                    print(f'Player {player.name} which player do you want to extort?')
                     for x in range(len(names)):
                         if turn != x:
                             print(f"{x}) {names[x]}")
@@ -254,16 +272,16 @@ def main():
                         duke.block = True
 
                 if elec == 5:
-                    print('which player do you want to murder?')
+                    print('Which player do you want to assassin?')
                     for x in range(len(names)):
                         if turn != x:
                             print(f"{x}) {names[x]}")
                     valu= printer.inputverifier(input())
                     play=players[valu]
-                    assassin.killer(player,contessa,play,name)
+                    assassin.killer(player,contessa,play,name_cards)
 
                 if elec == 6:
-                    ambassador.exchange_card(duke,cards,player,name_cards)
+                    ambassador.excahnge_card(duke,cards,player,name_cards)
 
 
                 
@@ -309,7 +327,7 @@ def main():
     
 if __name__ == '__main__':
     
-    #aca llama funciones
+    #Calls functions
     main()
 
         

@@ -5,7 +5,7 @@ class Captain(Card):
            self.block_exto=True
                
            
-    def extortion(self,Ambassador,player,player_2): #Player 2 is the one getting extortioned
+    def extortion(self,Ambassador,player,player_2): #Player two is the one getting extorted
         if self.block_exto != False and Ambassador.block_exto != False:
             coins= player_2.change_coins(-2)
             player.change_coins(coins)
@@ -17,4 +17,4 @@ class Captain(Card):
     def block_extotion(self):
         self.block_exto=False
         
-        #Captain methods
+        #Captain Methods

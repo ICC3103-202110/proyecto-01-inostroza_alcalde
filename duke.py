@@ -1,5 +1,5 @@
 from card import Card
-class Duke(Card): #Duke Ready
+class Duke(Card): #Duke ready
     def __init__(self,name):
        super().__init__(name)
        self.block = True
@@ -9,4 +9,4 @@ class Duke(Card): #Duke Ready
          
     def plus_tax(self,player):
          player.change_coins(3)
-    # Duke Methods:
+    # Duke Methods

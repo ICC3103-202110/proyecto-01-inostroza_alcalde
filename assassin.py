@@ -1,5 +1,5 @@
 from card import Card 
-class Assassin(Card): #Assassin Ready
+class Assassin(Card): # Assassin ready
     def __init__(self,name):
            super().__init__(name) 
 

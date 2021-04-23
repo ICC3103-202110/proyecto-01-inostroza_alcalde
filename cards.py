@@ -1,5 +1,5 @@
 import random
-class Cards(): #Cards ready
+class Cards(): #Cards Ready
       def __init__(self,card=0):
              self.card=card
 
@@ -12,7 +12,7 @@ class Cards(): #Cards ready
          random.shuffle(table) #second disorder 
          self.cards = table
 
-      def delete_card(self): #Takes out cards of the deck
+      def delete_card(self): #To pick cards out of the deck
             cards=self.cards
             self.s_card = cards[0]
             cards.pop(0)

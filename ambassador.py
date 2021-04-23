@@ -20,8 +20,10 @@ class Ambassador(Card):
         return
 
            
-    def exchange_card(self,duke,cards,player,name_cards):
+    def excahnge_card(self,duke,cards,player,name_cards):
         if duke.block == True:
+            print()
+            print(f"Player {player.name}, please choose the cards for your new deck")
             all = []
             val = []
             va=2
@@ -31,7 +33,7 @@ class Ambassador(Card):
             cards.delete_card()
             value_2 = cards.s_card
             all.append(value_2)
-            p_card = player.cards
+            p_card = player.cards[:]
             if p_card[0][0] == 1:
                 all.append(p_card[0][1])
             else:
@@ -53,36 +55,34 @@ class Ambassador(Card):
                     stop=1
                     break
                 for x in range(len(all)):
-                    if x == "dead card":
-                        print(str(x)+') '+all[x])
+                    if all[x] == "dead card":
+                        print(str(x)+') '+str(all[x]))
                     else:
                         print(f"{x}) {name_cards[all[x]-1]}")
                 valu=int(input())
-                if valu in val == True:
-                    print('This card is already selected for your deck')
+                if (valu in val) == True:
+                    print('This card has already been selected for your deck, please select another')
                 else:
                     val.append(valu)
                     
            
-            
+            new_card=[]
             for x in val:
                 if x == 3:
                     if va == 1:
-                        c_2=[0,p_card[1][1]]
+                        new_card.append([0,p_card[1][1]])
                     else:
-                        c_2=[1,p_card[1][1]]
+                        new_card.append([1,p_card[1][1]])
                 elif x == 2:
                     if va == 1:
-                        c_1=[0,p_card[0][1]]
+                        new_card.append([0,p_card[0][1]])
                     else:
-                        c_1=[1,p_card[0][1]]
-                
-                if x == 0:
-                    c_1=[1,all[val[x]]]
-                if x == 1:
-                    c_2=[1,all[val[x]]]
-                    
-            player.cards=[c_1,c_2]
+                        new_card.append([1,p_card[0][1]])
+                elif x == 0:
+                    new_card.append([1,all[val[x]]])
+                elif x == 1:
+                    new_card.append([1,all[val[x]]])
+            player.cards=new_card
             for x in range(len(all)):
                 if x in val == False:
                     cards.add_card(all[x])

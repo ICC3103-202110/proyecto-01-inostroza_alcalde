@@ -1,8 +1,8 @@
 class Player():
-    def __init__(self,name,coins,cards): #las cartas van a cambiar mucho, creo que no vale la pena que sean privadas 
+    def __init__(self,name,coins,cards): #Cards will change a lot, so it's not necessary to make them private
         self.__name=name
         self.__coins=coins
-        self.cards=cards #cambiar esto si lo quiero hacer privado 
+        self.cards=cards #Change this if you want to make it private
         self.__life=True
 
     @property
@@ -32,29 +32,32 @@ class Player():
         else:
             self.__life
 
-    def raise_card(self,names_cards): 
-        cards=self.cards
+    def raise_card(self,name_cards): 
+        print(f'Player {self.name}, select a letter to delete:')
+        cards=self.cards[:]
         stop=0
         while stop !=1 :
             values=[]
             if cards[0][0]==1:
-                print(f"0) {names_cards[cards[0][1]-1]}")
+                c_1=cards[0][1] -1
+                print(f"0) {name_cards[c_1]}")
                 values.append(0)
             if cards[1][0] == 1:
-                print(f"1) {names_cards[cards[1][1]-1]} \n")
+                c_2=cards[1][1] -1
+                print(f"1) {name_cards[c_2]} \n")
                 values.append(1)
-            val = input("enter the position of the card you want to turn: \n")
+            val = input("Enter the position of the card you want to turn: \n")
             if val == '1' or val=='0':
                 value=int(val)
                 if cards[value][0]==1:
                     stop=1
                     break
                 else:
-                    print('selected card is no longer in your deck, try again')
+                    print('Selected card is no longer in your deck, try again')
             else:
-                print('wrong embedded value')
+                print('Wrong embedded value')
         cards[value][0] = 0
-        self.cards =cards
+        self.cards = cards
 
     def end_game(self):
         cards=self.cards
@@ -62,7 +65,7 @@ class Player():
             self.life = False
         self.life
 
-    def change_coins(self,value): #esto de aca se deberia cambiar creo, pasa usar el setter 
+    def change_coins(self,value): #This should be changed, to use the setter
         val=self.__coins
         if value==-2:
             
@@ -92,11 +95,8 @@ class Player():
             cards[1][1] = cards_1.s_card
         self.cards=cards
 
-
-            
-
 '''   
-   por ahora las cartas son no privadas, despues cver como las hago privadas 
+   For now cards are not private.
     @property
     def cards(self):
         return self.__cards
@@ -107,8 +107,3 @@ class Player():
             if (value[0] != 0):
 
 '''
-
-
-
-        
-    # de atributods va a tener sus dos cartas y las monedas 

@@ -34,7 +34,7 @@ def winner(player_1,player_2,player_3,player_4=0):
         stop=0
         while stop<len(lifes):
             if lifes[stop] == 1:
-                return stop  #retorna lugar del ganador 
+                return stop  #Returns winner place
             stop+=1
 
 
