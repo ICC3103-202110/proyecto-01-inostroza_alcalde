@@ -284,18 +284,25 @@ def main():
                     ambassador.excahnge_card(duke,cards,player,name_cards)
 
 
-                
+        for pl in players:
+            pl.end_game
+        
+        loser=[]
+        for t in range(len(players)):
+            pl=players[t]
+            if pl.life == False:
+                print(f"{pl.name} loses the game")
+                loser.append(t)
+        if len(loser)>0:
+            for x in loser:
+                players.pop(x)
+                names.pop(x)
+        if len(players) == 1:
+            win_play=players[0]
+            print("{win_play.name} wins the game, has absolute control over the city")
+            stop_1=1
+            break
 
-
-
-
-                
-                
-
-            
-                
-
-            
 
             
 

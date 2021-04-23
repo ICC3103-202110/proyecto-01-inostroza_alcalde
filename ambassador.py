@@ -92,8 +92,4 @@ class Ambassador(Card):
 
     def block_extotion(self):
         self.block_exto= False
-        
 
-    def restore(self):
-        self.__cards_1 = [6,6]
-        return
