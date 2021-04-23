@@ -20,7 +20,7 @@ def inputverifier(value):
             stop=1
             return value
 
-    else:
+        else:
             value = input("Invalid input value, please try again\n")
 
 def election(names,turn,players):
@@ -168,7 +168,6 @@ def priority_challeng(names,turn): #Ready
                         else:
                             return value_1 , len(cha),participation
         print("It seems that we have more than one brave, the challenge refers")
-        print(len(cha))
         if len(cha) == 0:
             return value_1,1,participation
         random.shuffle(cha) #first disorder

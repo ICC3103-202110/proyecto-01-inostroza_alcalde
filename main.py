@@ -9,7 +9,7 @@ from player     import Player
 import system 
 import printer
 import random
-
+#print (f "") cannot be divided, so some cannot be less than 80 characters
 '''
 ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄   █▀▀ █▀█ █ █ █▀█   ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀ ▄▄ ▀▀
 ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░   █▄▄ █▄█ █▄█ █▀▀   ░░ ▀▀ ░░ ▀▀ ░░ ▀▀ ░░ ▀▀
@@ -136,15 +136,16 @@ def main():
                 if val != 10:
                     win_2 = printer.priority_challeng(names,val)
                     
-                if win_2 != 10:
+                if win_2[0] != 10:
                     print(
                     "As two challenges have been generated,"
                     " it will be chosen when grilling 1"
                     )
+                    
                     cha = [[win,turn],[win_2[0],val]]
                     ve = random.randint(0,1) #first disorder
                     gg = cha[ve]
-                    print(f"The winner to face {names[gg[1]-1]} is {names[gg[0]-1]}")
+                    print(f"The winner to face {names[gg[1][0]-1]} is {names[gg[0][1]-1]}")
                     stp=1
                     break
             else:
@@ -229,7 +230,7 @@ def main():
                     print('Starting card exchange, this '
                     'will be reflected in the next round')
                     player.chang_card(cards,value)
-                    print(win_2)
+
                     play_2 = players[win_2]
                     c_1=veri_card_1
                     c_2=veri_card_2
@@ -291,7 +292,7 @@ def main():
                 if elec == 6:
                     ambassador.excahnge_card(duke,cards,player,name_cards)
 
-
+        
         for pl in players:
             pl.End_game(False)
         

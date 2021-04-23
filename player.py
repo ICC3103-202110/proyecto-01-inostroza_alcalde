@@ -63,7 +63,6 @@ class Player():
         return
 
     def End_game(self,value):
-        print(value)
         cards=self.cards
         if cards[0][0] == 0 and cards[1][0] == 0:
             self.life = value
