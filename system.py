@@ -1,3 +1,6 @@
+"""
+we wanted to use this for the bonus, since we didn't do the bonus please ignore
+"""
 from contessa   import Contessa 
 from cards      import Cards 
 from captain    import Captain 
