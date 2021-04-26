@@ -1,5 +1,10 @@
-import random
+
 #This py is in charge of printing and basic verifications, but it never modifies any class
+#It was decided that it should not be a class, because despite serving it is like using a bomb to kill a fly,
+#  it would work but we think it would be a lot
+import random
+
+
 def startup():
     print(
     '''
